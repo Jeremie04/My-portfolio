@@ -2,7 +2,7 @@ import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 
 export default function Projects() {
   return (
-    <section className="py-24 px-10">
+    <section id="projects" className="py-24 px-10">
       <h2 className="text-3xl font-bold text-center mb-16">Mes projets</h2>
 
       <div className="grid md:grid-cols-3 gap-8">

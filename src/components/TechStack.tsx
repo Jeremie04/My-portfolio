@@ -42,7 +42,10 @@ const techCategories = [
 export default function TechStack() {
   return (
     <section className="py-24">
-      <h2 className="text-3xl font-bold text-center mb-16">Technologies</h2>
+      <div className="text-center mb-16">
+        <h2 className="text-3xl font-bold">Technologies</h2>
+        <div className="w-24 h-1 bg-purple-500 mx-auto mt-4 rounded"></div>
+      </div>
 
       <div className="space-y-16">
         {techCategories.map((category, i) => (

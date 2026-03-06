@@ -1,6 +1,39 @@
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu } from "lucide-react";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import { Menu, Folder, User, Mail, type LucideIcon } from "lucide-react";
+
+type NavItemProps = {
+  href: string;
+  icon: LucideIcon;
+  children: React.ReactNode;
+};
+
+export function NavItem({ href, icon: Icon, children }: NavItemProps) {
+  return (
+    <a
+      href={href}
+      className="
+          group flex items-center gap-3
+          px-4 py-3 rounded-lg text-lg font-medium
+          transition-all duration-200
+          hover:bg-muted hover:translate-x-1
+        "
+    >
+      <Icon className="w-5 h-5 text-purple-500 transition-transform duration-200 group-hover:scale-110" />
+
+      <span className="transition-colors group-hover:text-purple-500">
+        {children}
+      </span>
+    </a>
+  );
+}
 
 export default function Navbar() {
   return (
@@ -32,11 +65,31 @@ export default function Navbar() {
             </Button>
           </SheetTrigger>
 
-          <SheetContent side="right">
-            <nav className="flex flex-col gap-6 mt-10">
-              <a href="#projects">Projets</a>
-              <a href="#about">À propos</a>
-              <a href="#contact">Contact</a>
+          <SheetContent side="right" className="w-72">
+            <SheetHeader>
+              <SheetTitle>Jeremy.dev</SheetTitle>
+              <SheetDescription>Navigation principale du site</SheetDescription>
+            </SheetHeader>
+            <nav className="flex flex-col gap-3 mt-10">
+              <NavItem href="#projects" icon={Folder}>
+                Projets
+              </NavItem>
+
+              <NavItem href="#about" icon={User}>
+                À propos
+              </NavItem>
+
+              <NavItem href="#contact" icon={Mail}>
+                Contact
+              </NavItem>
+
+              {/* séparateur */}
+              <div className="border-t my-4"></div>
+
+              {/* bouton CTA */}
+              <a href="#contact">
+                <Button className="w-full">CV</Button>
+              </a>
             </nav>
           </SheetContent>
         </Sheet>
