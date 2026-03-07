@@ -1,84 +1,93 @@
-import { Card, CardContent, CardTitle } from "@/components/ui/card";
-
-import { FaReact, FaAngular, FaNodeJs, FaJava } from "react-icons/fa";
-
-import {
-  SiSpringboot,
-  SiTypescript,
-  SiJavascript,
-  SiPostgresql,
-  SiMysql,
-  SiMongodb,
-} from "react-icons/si";
-import { Services } from "./Services";
-
-const techCategories = [
+const skills = [
   {
     title: "Frontend",
-    tech: [
-      { icon: <FaReact color="#61DAFB" />, name: "React" },
-      { icon: <FaAngular color="#DD0031" />, name: "Angular" },
-      { icon: <SiTypescript color="#3178C6" />, name: "TypeScript" },
-      { icon: <SiJavascript color="#F7DF1E" />, name: "JavaScript" },
+    techs: [
+      { name: "Angular", icon: "devicon-angularjs-plain colored" },
+      { name: "React", icon: "devicon-react-original colored" },
+      { name: "HTML", icon: "devicon-html5-plain colored" },
+      { name: "CSS", icon: "devicon-css3-plain colored" },
+      { name: "Bootstrap", icon: "devicon-bootstrap-plain colored" },
+      { name: "Tailwind", icon: "devicon-tailwindcss-plain colored" },
+      { name: "TypeScript", icon: "devicon-typescript-plain colored" },
     ],
   },
   {
     title: "Backend",
-    tech: [
-      { icon: <FaNodeJs color="#339933" />, name: "Node.js" },
-      { icon: <FaJava color="#EA2D2E" />, name: "Java" },
-      { icon: <SiSpringboot color="#6DB33F" />, name: "Spring Boot" },
+    techs: [
+      { name: "Spring Boot", icon: "devicon-spring-plain colored" },
+      { name: "Express", icon: "devicon-express-original colored" },
+      { name: "Java", icon: "devicon-java-plain colored" },
+      { name: "CodeIgniter", icon: "devicon-codeigniter-plain colored" },
+      { name: "NodeJS", icon: "devicon-nodejs-plain colored" },
+      { name: "REST API", icon: "devicon-fastapi-plain colored" },
     ],
   },
   {
     title: "Database",
-    tech: [
-      { icon: <SiPostgresql color="#4169E1" />, name: "PostgreSQL" },
-      { icon: <SiMysql color="#4479A1" />, name: "MySQL" },
-      { icon: <SiMongodb color="#47A248" />, name: "MongoDB" },
+    techs: [
+      { name: "MySQL", icon: "devicon-mysql-plain colored" },
+      { name: "PostgreSQL", icon: "devicon-postgresql-plain colored" },
+      { name: "MongoDB", icon: "devicon-mongodb-plain colored" },
+      { name: "Oracle", icon: "devicon-oracle-original colored" },
+    ],
+  },
+  {
+    title: "Tools",
+    techs: [
+      { name: "Git", icon: "devicon-git-plain colored" },
+      { name: "Docker", icon: "devicon-docker-plain colored" },
+      { name: "Postman", icon: "devicon-postman-plain colored" },
+      { name: "Figma", icon: "devicon-figma-plain colored" },
+      { name: "VS Code", icon: "devicon-vscode-plain colored" },
+      { name: "GitHub", icon: "devicon-github-original colored" },
+    ],
+  },
+  {
+    title: "Machine Learning",
+    techs: [
+      { name: "Python", icon: "devicon-python-plain colored" },
+      { name: "Pandas", icon: "devicon-pandas-original colored" },
+      { name: "Scikit Learn", icon: "devicon-scikitlearn-plain colored" },
     ],
   },
 ];
 
 export default function TechStack() {
   return (
-    <section className="py-24">
-      <Services />
-      <div className="text-center mb-16">
-        <h2 className="text-3xl font-bold">Technologies</h2>
-        <div className="w-24 h-1 bg-purple-500 mx-auto mt-4 rounded"></div>
-      </div>
+    <section id="skills" className="py-24 px-6">
+      <div className="max-w-6xl mx-auto">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl font-bold">Compétences</h2>
+          <p className="text-muted-foreground mt-4">
+            Technologies et outils que j'utilise pour concevoir et développer
+            des applications modernes.
+          </p>
+        </div>
 
-      <div className="space-y-16">
-        {techCategories.map((category, i) => (
-          <section key={i} className="space-y-10">
-            {/* Titre de la catégorie */}
-            <div className="text-center">
-              <h3 className="text-2xl font-semibold tracking-tight">
+        <div className="space-y-12">
+          {skills.map((category, index) => (
+            <div key={index}>
+              <h3 className="text-xl font-semibold text-center mb-6">
                 {category.title}
               </h3>
-              <div className="w-16 h-1 bg-primary mx-auto mt-3 rounded-full" />
-            </div>
 
-            {/* Grille des technologies */}
-            <div className="grid grid-cols-[repeat(auto-fit,minmax(120px,1fr))] gap-6 max-w-5xl mx-auto">
-              {category.tech.map((tech, index) => (
-                <Card
-                  key={index}
-                  className="flex flex-col items-center justify-center text-center p-6 h-32 transition-all hover:shadow-lg hover:-translate-y-1"
-                >
-                  <CardContent className="flex flex-col items-center gap-3 p-0">
-                    <div className="text-4xl text-primary">{tech.icon}</div>
+              <div className="flex flex-wrap justify-center gap-10">
+                {category.techs.map((tech, i) => (
+                  <div
+                    key={i}
+                    className="flex flex-col items-center text-center hover:scale-110 transition"
+                  >
+                    <i className={`${tech.icon} text-5xl`}></i>
 
-                    <CardTitle className="text-sm font-medium">
+                    <span className="text-sm text-muted-foreground mt-2">
                       {tech.name}
-                    </CardTitle>
-                  </CardContent>
-                </Card>
-              ))}
+                    </span>
+                  </div>
+                ))}
+              </div>
             </div>
-          </section>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   );

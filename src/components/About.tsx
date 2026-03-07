@@ -1,4 +1,3 @@
-import TechStack from "./TechStack";
 import Parcours from "./Parcours";
 
 export default function About() {
@@ -41,8 +40,6 @@ export default function About() {
           <Parcours />
         </div>
       </div>
-
-      <TechStack />
     </section>
   );
 }

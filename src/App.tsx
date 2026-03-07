@@ -4,6 +4,8 @@ import Hero from "./components/Hero";
 import Projects from "./components/Projects";
 import Contact from "./components/Contact";
 import About from "./components/About";
+import TechStack from "./components/TechStack";
+import { Services } from "./components/Services";
 
 function App() {
   return (
@@ -53,6 +55,8 @@ function App() {
           <Navbar />
           <Hero />
           <About />
+          <Services />
+          <TechStack />
           <Projects />
           <Contact />
         </div>
