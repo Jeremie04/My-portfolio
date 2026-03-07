@@ -1,5 +1,5 @@
 import { Brain, Code, Layers, Rocket } from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
+import { Card, CardContent } from "./ui/card";
 const services = [
   {
     title: "Conception & Architecture",
