@@ -37,10 +37,12 @@ export function NavItem({ href, icon: Icon, children }: NavItemProps) {
 
 export default function Navbar() {
   return (
-    <header className="border-b bg-white">
+    <header className="fixed top-0 left-0 right-0 z-50 border-b bg-white/70 backdrop-blur">
       <div className="container mx-auto flex h-16 items-center justify-between px-6">
         {/* Logo */}
-        <h1 className="text-xl font-bold">Jeremy.dev</h1>
+        <a href="#home">
+          <h1 className="text-xl font-bold">Ranto Jeremie.dev</h1>
+        </a>
 
         {/* Desktop menu */}
         <nav className="hidden md:flex gap-6 items-center">
@@ -67,7 +69,9 @@ export default function Navbar() {
 
           <SheetContent side="right" className="w-72">
             <SheetHeader>
-              <SheetTitle>Jeremy.dev</SheetTitle>
+              <a href="#home">
+                <SheetTitle>Ranto Jeremie.dev</SheetTitle>
+              </a>
               <SheetDescription>Navigation principale du site</SheetDescription>
             </SheetHeader>
             <nav className="flex flex-col gap-3 mt-10">
