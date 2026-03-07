@@ -1,17 +1,9 @@
-<!-- Un sitemap est un fichier qui indique à Google et aux autres moteurs toutes les pages de ton site.
-
-C’est comme une carte de navigation pour les robots de Google. -->
-
 <?xml version="1.0" encoding="UTF-8"?>
 
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
   <url>
     <loc>https://portfolio-jeremie04s-projects.vercel.app</loc>
-  </url>
-
-  <url>
-    <loc>https://portfolio-jeremie04s-projects.vercel.app/projects</loc>
   </url>
 
 </urlset>
