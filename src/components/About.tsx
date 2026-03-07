@@ -1,13 +1,11 @@
 import TechStack from "./TechStack";
+import Parcours from "./Parcours";
 
 export default function About() {
   return (
-    <section
-      id="about"
-      className="min-h-screen text-center max-w-3xl mx-auto px-5"
-    >
-      <div className="max-w-5xl mx-auto items-center">
-        <div>
+    <section id="about" className=" text-center max-w-4xl mx-auto px-5">
+      <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-15 items-center">
+        <div className="order-1">
           <h2 className="text-3xl font-bold mb-6">À propos</h2>
 
           <p className="text-muted-foreground mb-6">
@@ -35,23 +33,12 @@ export default function About() {
             compétences et à relever de nouveaux défis techniques en contribuant
             à des projets concrets et utiles pour les utilisateurs.
           </p>
+        </div>
 
-          <div className="grid grid-cols-3 gap-4 text-center mt-6">
-            <div>
-              <p className="text-2xl font-bold">Bacc +5</p>
-              <p className="text-sm text-muted-foreground">Education</p>
-            </div>
-
-            <div>
-              <p className="text-2xl font-bold">3+</p>
-              <p className="text-sm text-muted-foreground">Technologies</p>
-            </div>
-
-            <div>
-              <p className="text-2xl font-bold">100%</p>
-              <p className="text-sm text-muted-foreground">Passion</p>
-            </div>
-          </div>
+        {/* PARCOURS */}
+        <div className="order-2 space-y-6 h-100">
+          <h2 className="text-2xl font-bold mb-6">Parcours</h2>
+          <Parcours />
         </div>
       </div>
 
