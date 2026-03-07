@@ -10,6 +10,7 @@ import {
   SiMysql,
   SiMongodb,
 } from "react-icons/si";
+import { Services } from "./Services";
 
 const techCategories = [
   {
@@ -42,6 +43,7 @@ const techCategories = [
 export default function TechStack() {
   return (
     <section className="py-24">
+      <Services />
       <div className="text-center mb-16">
         <h2 className="text-3xl font-bold">Technologies</h2>
         <div className="w-24 h-1 bg-purple-500 mx-auto mt-4 rounded"></div>

@@ -3,7 +3,7 @@ import Parcours from "./Parcours";
 
 export default function About() {
   return (
-    <section id="about" className=" text-center max-w-4xl mx-auto px-5">
+    <section id="about" className="py-24 text-center max-w-4xl mx-auto px-5">
       <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-15 items-center">
         <div className="order-1">
           <h2 className="text-3xl font-bold mb-6">À propos</h2>
