@@ -7,31 +7,44 @@ export default function About() {
         <div className="order-1">
           <h2 className="text-3xl font-bold mb-6">À propos</h2>
 
-          <p className="text-muted-foreground mb-6">
-            Développeur Full-Stack spécialisé en React, Angular et Spring Boot.
-            Actuellement en cours d’obtention de mon Master, je développe des
-            applications web modernes en mettant l’accent sur la qualité, la
-            performance et la maintenabilité.
+          <p className="text-muted-foreground text-justify leading-relaxed tracking-normal max-w-2xl mb-5">
+            Développeur Full-Stack spécialisé en React, Angular et Spring Boot,
+            actuellement en cours d’obtention de mon Master. Je conçois des
+            applications web modernes en mettant l’accent sur la performance, la
+            qualité du code et la maintenabilité.
           </p>
 
-          <p className="text-muted-foreground mb-6">
-            Je conçois des applications complètes en couvrant l’ensemble du
-            cycle de développement : conception, développement frontend, backend
-            et déploiement.
+          <p className="text-muted-foreground text-justify leading-relaxed tracking-normal max-w-2xl mb-5">
+            J’interviens sur l’ensemble du cycle de développement : conception,
+            développement frontend et backend, intégration d’API et déploiement
+            d’applications. Mon objectif est de construire des solutions
+            fiables, performantes et centrées sur l’utilisateur.
           </p>
 
-          <p className="text-muted-foreground mb-6">
-            Curieux et passionné par l’ingénierie logicielle, j’accorde une
-            grande importance à la qualité du code, à l’architecture des
-            applications et aux bonnes pratiques comme le Clean Code, les tests
-            automatisés et les méthodologies Agile.
+          <p className="text-muted-foreground text-justify leading-relaxed tracking-normal max-w-2xl">
+            Passionné par l’ingénierie logicielle, je m’intéresse
+            particulièrement à l’architecture des applications, au Clean Code et
+            aux bonnes pratiques de développement. En début de carrière, je
+            cherche continuellement à progresser et à relever de nouveaux défis
+            techniques.
           </p>
 
-          <p className="text-muted-foreground mb-6">
-            En début de carrière, je cherche continuellement à approfondir mes
-            compétences et à relever de nouveaux défis techniques en contribuant
-            à des projets concrets et utiles pour les utilisateurs.
-          </p>
+          <div className="grid grid-cols-3 gap-4 text-center mt-6">
+            <div>
+              <p className="text-2xl font-bold">Bacc +5</p>
+              <p className="text-sm text-muted-foreground">Education</p>
+            </div>
+
+            <div>
+              <p className="text-2xl font-bold">5+</p>
+              <p className="text-sm text-muted-foreground">Technologies</p>
+            </div>
+
+            <div>
+              <p className="text-2xl font-bold">100%</p>
+              <p className="text-sm text-muted-foreground">Passion</p>
+            </div>
+          </div>
         </div>
 
         {/* PARCOURS */}

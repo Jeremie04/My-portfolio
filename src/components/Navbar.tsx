@@ -7,7 +7,17 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { Menu, Folder, User, Mail, type LucideIcon } from "lucide-react";
+import {
+  Menu,
+  User,
+  Mail,
+  type LucideIcon,
+  Briefcase,
+  Brain,
+  FolderGit2,
+  Download,
+} from "lucide-react";
+import { useEffect, useState } from "react";
 
 type NavItemProps = {
   href: string;
@@ -35,7 +45,36 @@ export function NavItem({ href, icon: Icon, children }: NavItemProps) {
   );
 }
 
+const navLinks = [
+  { id: "about", label: "À propos", icon: User },
+  { id: "services", label: "Services", icon: Briefcase },
+  { id: "skills", label: "Compétences", icon: Brain },
+  { id: "projects", label: "Projets", icon: FolderGit2 },
+  { id: "contact", label: "Contact", icon: Mail },
+];
+
 export default function Navbar() {
+  // pour les changement des link selon la section
+  const [activeSection, setActiveSection] = useState("about");
+
+  useEffect(() => {
+    const sections = document.querySelectorAll("section");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      {
+        threshold: 0.6,
+      }
+    );
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 border-b bg-white/70 backdrop-blur">
       <div className="container mx-auto flex h-16 items-center justify-between px-6">
@@ -46,17 +85,22 @@ export default function Navbar() {
 
         {/* Desktop menu */}
         <nav className="hidden md:flex gap-6 items-center">
-          <a href="#projects" className="text-sm hover:text-primary">
-            Projets
-          </a>
-          <a href="#about" className="text-sm hover:text-primary">
-            À propos
-          </a>
-          <a href="#contact" className="text-sm hover:text-primary">
-            Contact
-          </a>
-
-          <Button>CV</Button>
+          {navLinks.map((link) => (
+            <a
+              key={link.id}
+              href={`#${link.id}`}
+              className={`nav-link text-sm hover:text-primary ${
+                activeSection === link.id
+                  ? "active-link text-primary font-semibold"
+                  : ""
+              }`}
+            >
+              {link.label}
+            </a>
+          ))}
+          <Button>
+            <Download data-icon="inline-start" /> CV
+          </Button>
         </nav>
 
         {/* Mobile menu */}
@@ -72,27 +116,25 @@ export default function Navbar() {
               <a href="#home">
                 <SheetTitle>Ranto Jeremie.dev</SheetTitle>
               </a>
-              <SheetDescription>Navigation principale du site</SheetDescription>
+              <SheetDescription></SheetDescription>
             </SheetHeader>
-            <nav className="flex flex-col gap-3 mt-10">
-              <NavItem href="#projects" icon={Folder}>
-                Projets
-              </NavItem>
-
-              <NavItem href="#about" icon={User}>
-                À propos
-              </NavItem>
-
-              <NavItem href="#contact" icon={Mail}>
-                Contact
-              </NavItem>
+            <nav className="flex flex-col gap-3">
+              {/* Les liens */}
+              {navLinks.map((link) => (
+                <NavItem key={link.id} href={`#${link.id}`} icon={link.icon}>
+                  {link.label}
+                </NavItem>
+              ))}
 
               {/* séparateur */}
               <div className="border-t my-4"></div>
 
               {/* bouton CTA */}
-              <a href="#contact">
-                <Button className="w-full">CV</Button>
+              <a href="#contact" className="p-4">
+                <Button className="w-full">
+                  <Download data-icon="inline-start" />
+                  CV
+                </Button>
               </a>
             </nav>
           </SheetContent>

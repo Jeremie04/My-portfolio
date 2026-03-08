@@ -6,6 +6,7 @@ import Contact from "./components/Contact";
 import About from "./components/About";
 import TechStack from "./components/TechStack";
 import { Services } from "./components/Services";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -23,6 +24,24 @@ function App() {
           //   `,
           //   backgroundSize: "48px 48px, 48px 48px, 100% 100%, 100% 100%",
           // }}
+          // style={{
+          //   backgroundImage: `
+          //     linear-gradient(to right, #f0f0f0 1px, transparent 1px),
+          //     linear-gradient(to bottom, #f0f0f0 1px, transparent 1px),
+          //     radial-gradient(circle 600px at 0% 200px, #d5c5ff, transparent),     /* Left */
+          //     radial-gradient(circle 600px at 100% 200px, #d5c5ff, transparent),  /* Right */
+          //     radial-gradient(circle 600px at 50% 0px, #d5c5ff, transparent),     /* Top */
+          //     radial-gradient(circle 600px at 50% 100%, #d5c5ff, transparent)     /* Bottom */
+          //   `,
+          //   backgroundSize: `
+          //     96px 64px,
+          //     96px 64px,
+          //     100% 100%,
+          //     100% 100%,
+          //     100% 100%,
+          //     100% 100%
+          //   `,
+          // }}
           // Colored blue
           // style={{
           //   backgroundImage: `
@@ -37,6 +56,7 @@ function App() {
           //     radial-gradient(circle at 40% 80%, rgba(224,231,255,0.3) 0%, transparent 60%)
           //   `,
           // }}
+          // Carreau
           style={{
             backgroundImage: `
               linear-gradient(to right, #d1d5db 1px, transparent 1px),
@@ -59,6 +79,7 @@ function App() {
           <TechStack />
           <Projects />
           <Contact />
+          <Footer />
         </div>
       </div>
     </>

@@ -2,3 +2,28 @@ body {
   background: linear-gradient(135deg, #f8fafc, #eef2ff);
   background-attachment: fixed;
 }
+
+.nav-link {
+  position: relative;
+  transition: color 0.25s ease;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -4px;
+  width: 0%;
+  height: 2px;
+  background: currentColor;
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.active-link::after {
+  width: 100%;
+}

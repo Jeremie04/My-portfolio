@@ -2,3 +2,14 @@ User-agent: *
 Allow: /
 
 Sitemap: https://portfolio-jeremie04s-projects.vercel.app/sitemap.xml
+
+# Google
+User-agent: Googlebot
+Allow: /
+
+# Bing
+User-agent: Bingbot
+Allow: /
+
+# Crawl delay
+Crawl-delay: 0
