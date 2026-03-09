@@ -18,6 +18,7 @@ import {
   Download,
 } from "lucide-react";
 import { useEffect, useState } from "react";
+import EmailDialog from "./EmailDialog";
 
 type NavItemProps = {
   href: string;
@@ -56,6 +57,7 @@ const navLinks = [
 export default function Navbar() {
   // pour les changement des link selon la section
   const [activeSection, setActiveSection] = useState("about");
+  const [openEmailDialog, setOpenEmailDialog] = useState(false);
 
   useEffect(() => {
     const sections = document.querySelectorAll("section");
@@ -76,70 +78,77 @@ export default function Navbar() {
   }, []);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 border-b bg-white/70 backdrop-blur">
-      <div className="container mx-auto flex h-16 items-center justify-between px-6">
-        {/* Logo */}
-        <a href="#home">
-          <h1 className="text-xl font-bold">Ranto Jeremie.dev</h1>
-        </a>
+    <>
+      <header className="fixed top-0 left-0 right-0 z-50 border-b bg-white/70 backdrop-blur">
+        <div className="container mx-auto flex h-16 items-center justify-between px-6">
+          {/* Logo */}
+          <a href="#home">
+            <h1 className="text-xl font-bold">Ranto Jeremie.dev</h1>
+          </a>
 
-        {/* Desktop menu */}
-        <nav className="hidden md:flex gap-6 items-center">
-          {navLinks.map((link) => (
-            <a
-              key={link.id}
-              href={`#${link.id}`}
-              className={`nav-link text-sm hover:text-primary ${
-                activeSection === link.id
-                  ? "active-link text-primary font-semibold"
-                  : ""
-              }`}
-            >
-              {link.label}
-            </a>
-          ))}
-          <Button>
-            <Download data-icon="inline-start" /> CV
-          </Button>
-        </nav>
-
-        {/* Mobile menu */}
-        <Sheet>
-          <SheetTrigger asChild className="md:hidden">
-            <Button variant="ghost" size="icon">
-              <Menu className="h-5 w-5" />
+          {/* Desktop menu */}
+          <nav className="hidden md:flex gap-6 items-center">
+            {navLinks.map((link) => (
+              <a
+                key={link.id}
+                href={`#${link.id}`}
+                className={`nav-link text-sm hover:text-primary ${
+                  activeSection === link.id
+                    ? "active-link text-primary font-semibold"
+                    : ""
+                }`}
+              >
+                {link.label}
+              </a>
+            ))}
+            <Button onClick={() => setOpenEmailDialog(true)}>
+              <Download data-icon="inline-start" /> CV
             </Button>
-          </SheetTrigger>
+          </nav>
 
-          <SheetContent side="right" className="w-72">
-            <SheetHeader>
-              <a href="#home">
-                <SheetTitle>Ranto Jeremie.dev</SheetTitle>
-              </a>
-              <SheetDescription></SheetDescription>
-            </SheetHeader>
-            <nav className="flex flex-col gap-3">
-              {/* Les liens */}
-              {navLinks.map((link) => (
-                <NavItem key={link.id} href={`#${link.id}`} icon={link.icon}>
-                  {link.label}
-                </NavItem>
-              ))}
+          {/* Mobile menu */}
+          <Sheet>
+            <SheetTrigger asChild className="md:hidden">
+              <Button variant="ghost" size="icon">
+                <Menu className="h-5 w-5" />
+              </Button>
+            </SheetTrigger>
 
-              {/* séparateur */}
-              <div className="border-t my-4"></div>
+            <SheetContent side="right" className="w-72">
+              <SheetHeader>
+                <a href="#home">
+                  <SheetTitle>Ranto Jeremie.dev</SheetTitle>
+                </a>
+                <SheetDescription></SheetDescription>
+              </SheetHeader>
+              <nav className="flex flex-col gap-3">
+                {/* Les liens */}
+                {navLinks.map((link) => (
+                  <NavItem key={link.id} href={`#${link.id}`} icon={link.icon}>
+                    {link.label}
+                  </NavItem>
+                ))}
 
-              {/* bouton CTA */}
-              <a href="#contact" className="p-4">
-                <Button className="w-full">
-                  <Download data-icon="inline-start" />
-                  CV
-                </Button>
-              </a>
-            </nav>
-          </SheetContent>
-        </Sheet>
-      </div>
-    </header>
+                {/* séparateur */}
+                <div className="border-t my-4"></div>
+
+                {/* bouton CTA */}
+                <a href="#contact" className="p-4">
+                  <Button
+                    className="w-full"
+                    onClick={() => setOpenEmailDialog(true)}
+                  >
+                    <Download data-icon="inline-start" />
+                    CV
+                  </Button>
+                </a>
+              </nav>
+            </SheetContent>
+          </Sheet>
+        </div>
+      </header>
+      {/* Email Dialog */}
+      <EmailDialog open={openEmailDialog} setOpen={setOpenEmailDialog} />
+    </>
   );
 }
