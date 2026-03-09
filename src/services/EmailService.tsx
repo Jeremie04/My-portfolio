@@ -17,7 +17,7 @@ export const sendCV = async (
       templates[type].service_id,
       templates[type].template_id,
       {
-        user_email: email,
+        user_email: type == "sendCV" ? email : "rantojeremie@gmail.com",
         cv_link: "https://portfolio-jeremie04s-projects.vercel.app/cv.pdf",
       },
       "7gNWnZduDgizAV-IQ" // public key from emailJS
