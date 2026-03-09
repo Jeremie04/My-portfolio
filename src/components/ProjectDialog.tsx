@@ -15,6 +15,8 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { Button } from "./ui/button";
+import { Github } from "lucide-react";
 
 export function ProjectDialog({ project, open, setOpen }: any) {
   return (
@@ -38,7 +40,7 @@ export function ProjectDialog({ project, open, setOpen }: any) {
           </Carousel>
 
           {/* Description */}
-          <div className="space-y-4 p-10">
+          <div className="space-y-4 md:px-10">
             <DialogHeader>
               <DialogTitle>{project?.name}</DialogTitle>
               <DialogDescription></DialogDescription>
@@ -61,6 +63,37 @@ export function ProjectDialog({ project, open, setOpen }: any) {
                 <li key={i}>{info}</li>
               ))}
             </ul>
+            <div className="ml-auto">
+              {project?.moreDetails?.gits && (
+                <>
+                  {project?.moreDetails?.gits.map((git: any, i: number) => (
+                    <a
+                      key={i}
+                      href={git.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Button variant="ghost" size="sm">
+                        <Github />
+                        {git.name}
+                      </Button>
+                    </a>
+                  ))}
+                </>
+              )}
+              {project?.gitUrl && (
+                <a
+                  href={project?.gitUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Button variant="ghost" size="sm">
+                    <Github />
+                    Github
+                  </Button>
+                </a>
+              )}
+            </div>
           </div>
         </div>
       </DialogContent>

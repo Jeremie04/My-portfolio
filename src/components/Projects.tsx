@@ -12,6 +12,7 @@ type Project = {
   moreDetails?: {
     images?: string[];
     infoSup?: string[];
+    gits?: { link: string; name: string }[];
   };
 };
 
@@ -20,7 +21,7 @@ const projects: Project[] = [
     name: "Application de gestion frais d’administration",
     type: "Stage",
     description:
-      "Application permettant de gérer les frais d’administration avec authentification JWT et gestion de données via Postgres.",
+      "Application web permettant de gérer et automatiser le calcul des frais d’administration minière, avec génération automatique de factures et suivi en temps réel des opérations financières.",
     stacks: ["Angular", "Spring Boot", "JWT", "Postgres", "Rest API", "JPA"],
     imageUrl: "/Graphe-frais.png",
     gitUrl: "",
@@ -31,12 +32,22 @@ const projects: Project[] = [
         "/Historique-frais.png",
         "/Notif-frais.png",
         "/Repartition-frais.png",
+        "facture-frais.png",
+        "saisie-facture-frais.png",
       ],
       infoSup: [
-        "Envoi d'email automatisé intégré",
-        "Sécurisé avec JWT",
-        "Export données en CSV et PDF",
+        "Génération automatique de factures",
+        "Envoi d'email automatisé",
         "Dashboard interactif en temps réel",
+        "Export données en CSV et PDF",
+        "Sécurisation des accès avec JWT",
+      ],
+      gits: [
+        { link: "https://github.com/Jeremie04/angular-front", name: "front" },
+        {
+          link: "https://github.com/Jeremie04/back-spring-Frais-d-Administration",
+          name: "back",
+        },
       ],
     },
   },
@@ -56,19 +67,19 @@ const projects: Project[] = [
     gitUrl: "",
   },
   {
-    name: "Generic DAO en java",
+    name: "Generic DAO Framework en Java",
     type: "Projet Personnel",
     description:
-      "Implémentation d'un modèle générique DAO en Java pour faciliter la persistance des données.",
+      "Développement d’une architecture DAO générique en Java permettant de standardiser les opérations CRUD, améliorer la maintenabilité du code et faciliter l’intégration avec différentes entités métier.",
     stacks: ["Java", "POO"],
     imageUrl: "",
     gitUrl: "https://github.com/Jeremie04/GenericDAO",
   },
   {
-    name: "Application de Suggestion de médicament",
+    name: "Système de suggestion de traitements médicaux",
     type: "Projet Personnel",
     description:
-      "Application suggérant des médicaments selon les symptômes avec le minimum de budget possible.",
+      "Application intégrant un système de recommandation basé sur les symptômes, proposant des maladies probables et des médicaments optimisés selon un budget défini.",
     stacks: ["Spring", "JSP", "Postgres"],
     imageUrl: "",
     gitUrl: "https://github.com/Jeremie04/Dokotera",
@@ -76,7 +87,8 @@ const projects: Project[] = [
   {
     name: "Application de Gestion de Déchet",
     type: "Projet Académique",
-    description: "Application de gestion pour notification de déchets.",
+    description:
+      "Application permettant de planifier et suivre les collectes de déchets en temps réel, facilitant la communication entre les agents de collecte et les responsables de gestion.",
     stacks: ["Spring", "JSP", "Postgres"],
     imageUrl: "/dashboard-déchet.png",
     gitUrl: "",
@@ -90,16 +102,17 @@ const projects: Project[] = [
       ],
       infoSup: [
         "Notifications instantanées",
-        "UI intuitive",
+        "Interface utilisateur intuitive",
+        "Suivi des collectes en temps réel",
         "Export données en CSV et PDF",
       ],
     },
   },
   {
-    name: "Gestion garage",
+    name: "Système de gestion de garage automobile",
     type: "Projet Académique",
     description:
-      "Application de gestion d’un garage automobile avec authentification JWT et base MongoDB.",
+      "Application permettant de gérer les réservations, le suivi des réparations et la gestion des prestations automobiles, afin d’optimiser l’organisation et la relation client d’un garage.",
     stacks: ["Angular", "ExpressJS", "MongoDB", "JWT"],
     imageUrl: "",
     gitUrl: "",
@@ -113,15 +126,17 @@ export default function Projects() {
     <section id="projects" className="py-24 px-10">
       <h2 className="text-3xl font-bold text-center mb-16">Mes projets</h2>
 
-      <div className="grid md:grid-cols-3 gap-8">
-        {projects.map((project: Project, i: number) => (
-          <ProjectItem
-            setSelectedProject={setSelectedProject}
-            setOpen={setOpen}
-            key={i}
-            item={project}
-          />
-        ))}
+      <div className="max-w-6xl mx-auto md:px-4">
+        <div className="grid md:grid-cols-3 gap-6">
+          {projects.map((project: Project, i: number) => (
+            <ProjectItem
+              setSelectedProject={setSelectedProject}
+              setOpen={setOpen}
+              key={i}
+              item={project}
+            />
+          ))}
+        </div>
       </div>
       <ProjectDialog project={selectedProject} open={open} setOpen={setOpen} />
     </section>

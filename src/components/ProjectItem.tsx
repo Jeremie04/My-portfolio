@@ -69,16 +69,22 @@ export function ProjectItem({ item, setSelectedProject, setOpen }: any) {
       </div>
 
       {/* Header */}
-      <CardHeader className="p-4">
-        <CardAction>
-          <Badge variant="secondary">{item.type}</Badge>
-        </CardAction>
-        <CardTitle>{item.name}</CardTitle>
-        <CardDescription>{item.description}</CardDescription>
+      <CardHeader className="p-4 flex flex-col gap-2">
+        <div className="flex items-start justify-between mb-3">
+          <CardTitle>{item.name}</CardTitle>
+
+          <CardAction>
+            <Badge variant="secondary">{item.type}</Badge>
+          </CardAction>
+        </div>
+
+        <CardDescription className="text-justify">
+          {item.description}
+        </CardDescription>
       </CardHeader>
 
       {/* Footer Badges */}
-      <CardFooter className="flex flex-wrap gap-2 p-4">
+      <CardFooter className="flex flex-wrap gap-2 mt-auto md:p-4">
         {item.stacks.map((tech: string, i: number) => (
           <Badge key={i} variant="secondary">
             {tech}
