@@ -1,30 +1,48 @@
-import emailjs from "@emailjs/browser";
+export const sendCV = async (userEmail: string) => {
+  const res = await fetch(`${import.meta.env.VITE_API_URL}/send-cv`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      email: userEmail,
+    }),
+  });
 
-const templates = {
-  sendCV: { service_id: "service_4f0gfcv", template_id: "template_i4qhf4h" },
-  notification: {
-    service_id: "service_y8orvxm",
-    template_id: "template_vdylnet",
-  },
+  if (!res.ok) {
+    const text = await res.text();
+    throw new Error(text);
+  }
+
+  return res.json();
 };
 
-export const sendCV = async (
-  type: "sendCV" | "notification",
-  email: string
-) => {
-  try {
-    await emailjs.send(
-      templates[type].service_id,
-      templates[type].template_id,
-      {
-        user_email: type == "sendCV" ? email : "rantojeremie@gmail.com",
-        cv_link: "https://portfolio-jeremie04s-projects.vercel.app/cv.pdf",
-      },
-      "7gNWnZduDgizAV-IQ" // public key from emailJS
-    );
+export const sendNotif = async (userEmail: string) => {
+  const res = await fetch(`${import.meta.env.VITE_API_URL}/send-notif`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email: userEmail }),
+  });
+  return res.json();
+};
 
-    alert("Le CV a été envoyé avec succès !");
-  } catch (error) {
-    alert("Erreur lors de l'envoi du CV.");
+export const sendContactMessage = async (data: {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+}) => {
+  const res = await fetch(`${import.meta.env.VITE_API_URL}/contact`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+
+  if (!res.ok) {
+    throw new Error("Erreur lors de l'envoi");
   }
+
+  return res.json();
 };

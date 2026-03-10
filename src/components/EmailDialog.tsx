@@ -12,7 +12,7 @@ import { Input } from "@/components/ui/input";
 import { Toaster } from "@/components/ui/sonner";
 import { toast } from "sonner";
 import { useState } from "react";
-import { sendCV } from "@/services/EmailService";
+import { sendCV, sendNotif } from "@/services/EmailService";
 import { Loader2 } from "lucide-react";
 
 export default function EmailDialog({ open, setOpen }: any) {
@@ -22,13 +22,7 @@ export default function EmailDialog({ open, setOpen }: any) {
   const handleSend = async (email: string) => {
     try {
       setLoading(true);
-
-      // email pour le visiteur
-      await sendCV("sendCV", email);
-
-      // notification pour moi
-      await sendCV("notification", email);
-
+      await sendCV(email);
       toast.success("Le CV a été envoyé à votre adresse email.");
     } catch (error) {
       console.log(error);
@@ -36,6 +30,7 @@ export default function EmailDialog({ open, setOpen }: any) {
     } finally {
       setLoading(false);
       setOpen(false);
+      await sendNotif(email);
     }
   };
 

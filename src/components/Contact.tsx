@@ -1,8 +1,19 @@
 import { Button } from "@/components/ui/button";
-import { Facebook, Github, Linkedin, Mail, MapPin, Phone } from "lucide-react";
+import {
+  Facebook,
+  Github,
+  Linkedin,
+  Loader2,
+  Mail,
+  MapPin,
+  Phone,
+} from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
+import { useState } from "react";
+import { sendContactMessage } from "@/services/EmailService";
+import { toast } from "sonner";
 
 export default function Contact() {
   return (
@@ -81,19 +92,72 @@ export default function Contact() {
             </CardHeader>
 
             <CardContent className="space-y-4">
-              <Input placeholder="Votre nom" />
-
-              <Input type="email" placeholder="Votre email" />
-
-              <Input placeholder="Objet" />
-
-              <Textarea placeholder="Votre message..." className="h-40" />
-
-              <Button className="w-full">Envoyer</Button>
+              <MessageForm />
             </CardContent>
           </Card>
         </div>
       </div>
     </section>
+  );
+}
+
+function MessageForm() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [subject, setSubject] = useState("");
+  const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async () => {
+    try {
+      setLoading(true);
+      await sendContactMessage({
+        name,
+        email,
+        subject,
+        message,
+      });
+
+      toast.success("Message envoyé !");
+    } catch {
+      toast.error("Erreur lors de l'envoi.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <>
+      <Input
+        placeholder="Votre nom"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+      />
+
+      <Input
+        type="email"
+        placeholder="Votre email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+      />
+
+      <Input
+        placeholder="Objet"
+        value={subject}
+        onChange={(e) => setSubject(e.target.value)}
+      />
+
+      <Textarea
+        placeholder="Votre message..."
+        className="h-40"
+        value={message}
+        onChange={(e) => setMessage(e.target.value)}
+      />
+
+      <Button className="w-full" onClick={handleSubmit} disabled={loading}>
+        {loading && <Loader2 className="h-4 w-4 animate-spin" />}
+        {loading ? "Envoi..." : "Envoyer"}
+      </Button>
+    </>
   );
 }
