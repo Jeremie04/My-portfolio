@@ -1,4 +1,4 @@
-import { Marquee } from "@/components/shadcn-space/animations/marquee";
+import { Marquee } from "@/components/ui/marquee/marquee-animation";
 import { Card } from "@/components/ui/card";
 import {
   Lightbulb,
