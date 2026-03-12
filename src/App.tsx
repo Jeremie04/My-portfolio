@@ -7,7 +7,7 @@ import About from "./components/About";
 import TechStack from "./components/TechStack";
 import { Services } from "./components/Services";
 import Footer from "./components/Footer";
-import SoftSkills from "./components/Softskills";
+import SoftSkills from "./components/SoftSkills";
 
 function App() {
   return (

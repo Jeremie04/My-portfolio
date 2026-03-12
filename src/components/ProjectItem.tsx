@@ -19,7 +19,7 @@ export function ProjectItem({ item, setSelectedProject, setOpen }: any) {
           src={item.imageUrl ? item.imageUrl : "/project-default.png"}
           alt={item.name}
           loading="lazy"
-          className="w-full aspect-video object-cover transition-all duration-300 group-hover:brightness-50"
+          className="w-full aspect-video object-cover transition-all duration-300 group-hover:brightness-60"
         />
 
         {/* Overlay boutons GitHub + MoreDetails */}
