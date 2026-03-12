@@ -7,6 +7,7 @@ import About from "./components/About";
 import TechStack from "./components/TechStack";
 import { Services } from "./components/Services";
 import Footer from "./components/Footer";
+import SoftSkills from "./components/softskills";
 
 function App() {
   return (
@@ -77,6 +78,7 @@ function App() {
           <About />
           <Services />
           <TechStack />
+          <SoftSkills />
           <Projects />
           <Contact />
           <Footer />
