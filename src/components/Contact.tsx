@@ -108,9 +108,38 @@ function MessageForm() {
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
 
+  const [errors, setErrors] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+
+  const validate = () => {
+    const newErrors = {
+      name: "",
+      email: "",
+      subject: "",
+      message: "",
+    };
+
+    if (!name.trim()) newErrors.name = "Le nom est requis";
+
+    if (!email.trim()) newErrors.email = "L'email est requis";
+    else if (!/\S+@\S+\.\S+/.test(email)) newErrors.email = "Email invalide";
+
+    if (!subject.trim()) newErrors.subject = "L'objet est requis";
+
+    if (!message.trim()) newErrors.message = "Le message est requis";
+
+    setErrors(newErrors);
+    return !Object.values(newErrors).some(Boolean);
+  };
+
   const handleSubmit = async () => {
     try {
       setLoading(true);
+      if (!validate()) return;
       await sendContactMessage({
         name,
         email,
@@ -119,8 +148,9 @@ function MessageForm() {
       });
 
       toast.success("Message envoyé !");
-    } catch {
-      toast.error("Erreur lors de l'envoi.");
+    } catch (e: any) {
+      console.log(e);
+      toast.error(e.message);
     } finally {
       setLoading(false);
     }
@@ -128,31 +158,83 @@ function MessageForm() {
 
   return (
     <>
-      <Input
-        placeholder="Votre nom"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-      />
+      <div className="space-y-1">
+        <Input
+          id="name"
+          placeholder="Votre nom"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          aria-invalid={!!errors.name}
+          className="peer"
+        />
+        {errors.name && (
+          <p
+            role="alert"
+            aria-live="polite"
+            className="text-xs text-destructive"
+          >
+            {errors.name}
+          </p>
+        )}
+      </div>
 
-      <Input
-        type="email"
-        placeholder="Votre email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
+      <div className="space-y-1">
+        <Input
+          type="email"
+          placeholder="Votre email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          aria-invalid={!!errors.email}
+          className="peer"
+        />
+        {errors.email && (
+          <p
+            role="alert"
+            aria-live="polite"
+            className="text-xs text-destructive"
+          >
+            {errors.email}
+          </p>
+        )}
+      </div>
 
-      <Input
-        placeholder="Objet"
-        value={subject}
-        onChange={(e) => setSubject(e.target.value)}
-      />
+      <div className="space-y-1">
+        <Input
+          placeholder="Objet"
+          value={subject}
+          onChange={(e) => setSubject(e.target.value)}
+          aria-invalid={!!errors.subject}
+          className="peer"
+        />
+        {errors.subject && (
+          <p
+            role="alert"
+            aria-live="polite"
+            className="text-xs text-destructive"
+          >
+            {errors.subject}
+          </p>
+        )}
+      </div>
 
-      <Textarea
-        placeholder="Votre message..."
-        className="h-40"
-        value={message}
-        onChange={(e) => setMessage(e.target.value)}
-      />
+      <div className="space-y-1">
+        <Textarea
+          placeholder="Votre message..."
+          className="h-40 peer"
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+          aria-invalid={!!errors.message}
+        />
+        {errors.message && (
+          <p
+            role="alert"
+            aria-live="polite"
+            className="text-xs text-destructive"
+          >
+            {errors.message}
+          </p>
+        )}
+      </div>
 
       <Button className="w-full" onClick={handleSubmit} disabled={loading}>
         {loading && <Loader2 className="h-4 w-4 animate-spin" />}

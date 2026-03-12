@@ -40,9 +40,11 @@ export const sendContactMessage = async (data: {
     body: JSON.stringify(data),
   });
 
+  const responseData = await res.json();
+
   if (!res.ok) {
-    throw new Error("Erreur lors de l'envoi");
+    throw new Error(responseData.error || "Erreur lors de l'envoi");
   }
 
-  return res.json();
+  return responseData;
 };
