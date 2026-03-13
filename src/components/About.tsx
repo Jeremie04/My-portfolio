@@ -32,7 +32,7 @@ export default function About() {
           <div className="grid grid-cols-3 gap-4 text-center mt-6">
             <div>
               <p className="text-2xl font-bold">Bacc +5</p>
-              <p className="text-sm text-muted-foreground">Education</p>
+              <p className="text-sm text-muted-foreground">Formation</p>
             </div>
 
             <div>
