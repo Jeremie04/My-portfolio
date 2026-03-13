@@ -61,6 +61,7 @@ export default function Hero() {
           <img
             src="/profile.png"
             alt="Jeremie"
+            loading="lazy"
             className="relative w-72 md:w-90 object-contain"
           />
         </motion.div>
