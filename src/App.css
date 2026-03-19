@@ -1,8 +1,6 @@
 body {
-  background: linear-gradient(135deg, #f8fafc, #eef2ff);
   background-attachment: fixed;
 }
-
 .nav-link {
   position: relative;
   transition: color 0.25s ease;

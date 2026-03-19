@@ -1,0 +1,80 @@
+{
+    "navbar": {
+      "about": "À propos",
+      "service": "Service",
+      "skill": "Compétences",
+      "project": "Projets",
+      "contact": "Contact"
+    },
+    "hero": {
+      "title": "Bonjour, Je suis Ranto",
+      "description": "Développeur Full Stack spécialisé en React, Angular et Spring. Je conçois des applications web performantes et maintenables.",
+      "buttons": {
+        "primary": "Voir mes projets",
+        "secondary": "Me contacter"
+      }
+    },
+    "about": {
+      "title": "À propos",
+      "paragraph-1": "Développeur Full-Stack spécialisé en React, Angular et Spring Boot, actuellement en cours d’obtention de mon Master. Je conçois des applications web modernes en mettant l’accent sur la performance, la qualité du code et la maintenabilité.",
+      "paragraph-2": "J’interviens sur l’ensemble du cycle de développement : conception, développement frontend et backend, intégration d’API et déploiement d’applications. Mon objectif est de construire des solutions fiables, performantes et centrées sur l’utilisateur.",
+      "paragraph-3": "Passionné par l’ingénierie logicielle, je m’intéresse particulièrement à l’architecture des applications, au Clean Code et aux bonnes pratiques de développement. En début de carrière, je cherche continuellement à progresser et à relever de nouveaux défis techniques.",
+      "details": {
+        "formation": "Formation",
+        "techno": "Technologies",
+        "passion": "Passion"
+      },
+      "background": {
+        "title": "Parcours"
+      }
+    },
+    "services": {
+      "title": "Services",
+      "description": "Des solutions complètes pour concevoir, développer et déployer des applications web modernes."
+    },
+    "skills": {
+      "title": "Compétences",
+      "description": "Technologies et outils que j'utilise pour concevoir et développer des applications modernes."
+    },
+    "professional_skills": {
+      "title": "Compétences professionnelles"
+    },
+    "projects": {
+      "title": "Mes projets",
+      "empty": "Aucun projet pour le moment"
+    },
+    "contact": {
+      "title": "Contact",
+      "description": "N'hésitez pas à me contacter pour discuter de vos projets ou collaborations.",
+      "contact_details": "Mes coordonnées",
+      "social_media": "Réseaux sociaux",
+      "form": {
+        "title": "Envoyer un message",
+        "name": "Votre nom",
+        "email": "Votre Email",
+        "object": "Objet",
+        "message": "Votre message",
+        "button": "Envoyer",
+        "button_loading": "Envoi..."
+      },
+      "message": {
+        "error": {
+          "name":"Le nom est requis",
+          "email":"L'email est requis",
+          "invalid_email":"Email invalide",
+          "object":"L'objet est requis",
+          "message":"Le message est requis"
+        },
+        "toast": {
+          "success": "Message envoyé !"
+        }
+      }
+    },
+    "footer": {
+      "description": "Développeur Full-Stack spécialisé en React, Angular et Spring Boot. Je conçois des applications web modernes, performantes et maintenables.",
+      "navigation": "Navigation",
+      "contact": "Contact",
+      "message": "Disponible pour des opportunités et collaborations.",
+      "right": "Tous droits réservés."
+    }
+  }

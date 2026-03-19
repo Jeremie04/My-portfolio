@@ -2,8 +2,10 @@
 
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { useTranslation } from "react-i18next";
 
 export default function Hero() {
+  const { t } = useTranslation();
   return (
     <section
       id="home"
@@ -18,7 +20,7 @@ export default function Hero() {
             transition={{ duration: 0.6 }}
             className="text-4xl md:text-5xl font-bold mb-6"
           >
-            Bonjour, je suis Jeremie
+            {t("hero.title")}
           </motion.h1>
 
           <motion.p
@@ -27,8 +29,7 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-lg md:text-xl text-muted-foreground max-w-xl mb-8"
           >
-            Développeur Full Stack spécialisé en React, Angular et Spring. Je
-            conçois des applications web performantes et maintenables.
+            {t("hero.description")}
           </motion.p>
 
           <motion.div
@@ -38,11 +39,11 @@ export default function Hero() {
             className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start"
           >
             <a href="#projects">
-              <Button>Voir mes projets</Button>
+              <Button>{t("hero.buttons.primary")}</Button>
             </a>
 
             <a href="#contact">
-              <Button variant="outline">Me contacter</Button>
+              <Button variant="outline">{t("hero.buttons.secondary")}</Button>
             </a>
           </motion.div>
         </div>

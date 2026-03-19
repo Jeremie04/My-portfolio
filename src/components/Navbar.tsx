@@ -19,6 +19,9 @@ import {
 } from "lucide-react";
 import { useEffect, useState } from "react";
 import EmailDialog from "./EmailDialog";
+import { ThemeSwitch } from "./theme-switch";
+import LanguageSwitcher from "./LanguageSwitcher";
+import { useTranslation } from "react-i18next";
 
 type NavItemProps = {
   href: string;
@@ -47,17 +50,19 @@ export function NavItem({ href, icon: Icon, children }: NavItemProps) {
 }
 
 const navLinks = [
-  { id: "about", label: "À propos", icon: User },
-  { id: "services", label: "Services", icon: Briefcase },
-  { id: "skills", label: "Compétences", icon: Brain },
-  { id: "projects", label: "Projets", icon: FolderGit2 },
-  { id: "contact", label: "Contact", icon: Mail },
+  { id: "about", label: "navbar.about", icon: User },
+  { id: "services", label: "navbar.service", icon: Briefcase },
+  { id: "skills", label: "navbar.skill", icon: Brain },
+  { id: "projects", label: "navbar.project", icon: FolderGit2 },
+  { id: "contact", label: "navbar.contact", icon: Mail },
 ];
 
 export default function Navbar() {
   // pour les changement des link selon la section
   const [activeSection, setActiveSection] = useState("about");
   const [openEmailDialog, setOpenEmailDialog] = useState(false);
+
+  const { t } = useTranslation();
 
   useEffect(() => {
     const sections = document.querySelectorAll("section");
@@ -79,7 +84,7 @@ export default function Navbar() {
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 z-50 border-b bg-white/70 backdrop-blur">
+      <header className="fixed top-0 left-0 right-0 z-50 border-b bg-white/70 dark:bg-black/70 backdrop-blur">
         <div className="container mx-auto flex h-16 items-center justify-between px-6">
           {/* Logo */}
           <a href="#home">
@@ -98,9 +103,11 @@ export default function Navbar() {
                     : ""
                 }`}
               >
-                {link.label}
+                {t(link.label)}
               </a>
             ))}
+            <ThemeSwitch />
+            <LanguageSwitcher />
             <Button onClick={() => setOpenEmailDialog(true)}>
               <Download data-icon="inline-start" /> CV
             </Button>
@@ -116,32 +123,34 @@ export default function Navbar() {
 
             <SheetContent side="right" className="w-72">
               <SheetHeader>
-                <a href="#home">
-                  <SheetTitle>Ranto Jeremie.dev</SheetTitle>
-                </a>
+                <SheetTitle>Ranto Jeremie.dev</SheetTitle>
                 <SheetDescription></SheetDescription>
               </SheetHeader>
               <nav className="flex flex-col gap-3">
                 {/* Les liens */}
                 {navLinks.map((link) => (
                   <NavItem key={link.id} href={`#${link.id}`} icon={link.icon}>
-                    {link.label}
+                    {t(link.label)}
                   </NavItem>
                 ))}
-
                 {/* séparateur */}
-                <div className="border-t my-4"></div>
+                <div className="border-t my-2"></div>
 
-                {/* bouton CTA */}
-                <a href="#contact" className="p-4">
-                  <Button
-                    className="w-full"
-                    onClick={() => setOpenEmailDialog(true)}
-                  >
-                    <Download data-icon="inline-start" />
-                    CV
-                  </Button>
-                </a>
+                <div className="flex items-center p-2 gap-2 w-full">
+                  <ThemeSwitch />
+
+                  <LanguageSwitcher />
+
+                  <a href="#contact" className="flex-1">
+                    <Button
+                      className="w-full"
+                      onClick={() => setOpenEmailDialog(true)}
+                    >
+                      <Download data-icon="inline-start" />
+                      CV
+                    </Button>
+                  </a>
+                </div>
               </nav>
             </SheetContent>
           </Sheet>

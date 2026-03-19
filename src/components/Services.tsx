@@ -1,64 +1,25 @@
-import { Brain, Code, Layers, Rocket } from "lucide-react";
 import { Card, CardContent } from "./ui/card";
-const services = [
-  {
-    title: "Conception & Architecture",
-    description:
-      "Transformation des idées en solutions web robustes grâce à une architecture logicielle bien pensée.",
-    icon: Layers,
-    items: [
-      "Analyse des besoins",
-      "Architecture API",
-      "Modélisation base de données",
-      "Méthodologie Agile / Scrum",
-    ],
-  },
-  {
-    title: "Développement Web",
-    description:
-      "Création d'applications web modernes, performantes et sécurisées adaptées aux besoins.",
-    icon: Code,
-    items: [
-      "Authentification sécurisée (JWT)",
-      "Interfaces modernes & fluides",
-      "Back-end robuste",
-      "Code propre & testé",
-    ],
-  },
-  {
-    title: "Intelligence Artificielle",
-    description:
-      "Mise en place de modèles intelligents pour exploiter les données et créer des systèmes prédictifs.",
-    icon: Brain,
-    items: ["Machine Learning", "Analyse de données", "Modèles de prédiction"],
-  },
-  {
-    title: "Déploiement & DevOps",
-    description:
-      "Mise en production et automatisation pour garantir la stabilité et la disponibilité des applications.",
-    icon: Rocket,
-    items: [
-      "Conteneurisation Docker",
-      "Déploiement cloud (Vercel, VPS…)",
-      "Scripts CI/CD",
-      "Maintenance & sécurisation",
-    ],
-  },
-];
+import { useTranslation } from "react-i18next";
+import i18n from "@/config/i18n";
+import type { Lang } from "@/data/types";
+import { services } from "@/data/services";
+
 export function Services() {
+  const lang = i18n.language.split("-")[0] as Lang;
+  const items = services[lang] || services.en;
+  const { t } = useTranslation();
   return (
     <section id="services" className="py-24 px-6">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold">Services</h2>
+          <h2 className="text-3xl font-bold">{t("services.title")}</h2>
           <p className="text-muted-foreground mt-4">
-            Des solutions complètes pour concevoir, développer et déployer des
-            applications web modernes.
+            {t("services.description")}
           </p>
         </div>
 
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-2">
-          {services.map((service, index) => {
+          {items.map((service, index) => {
             const Icon = service.icon;
 
             return (
