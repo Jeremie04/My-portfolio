@@ -8,11 +8,19 @@ import TechStack from "./components/TechStack";
 import { Services } from "./components/Services";
 import Footer from "./components/Footer";
 import SoftSkills from "./components/SoftSkills";
+import { useTheme } from "@/context/theme-provider";
 
 function App() {
+  const { resolvedTheme } = useTheme();
+
+  const lineColor =
+    resolvedTheme === "dark"
+      ? "rgba(255, 255, 255, 0.318)" // très léger en dark
+      : "#d1d5db"; // gris en light
+
   return (
     <>
-      <div className="min-h-screen w-full bg-white relative">
+      <div className="min-h-screen w-full bg-white dark:bg-black relative">
         {/* Background */}
         <div
           className="fixed inset-0 z-0"
@@ -60,8 +68,8 @@ function App() {
           // Carreau
           style={{
             backgroundImage: `
-              linear-gradient(to right, #d1d5db 1px, transparent 1px),
-              linear-gradient(to bottom, #d1d5db 1px, transparent 1px)
+              linear-gradient(to right, ${lineColor} 1px, transparent 1px),
+              linear-gradient(to bottom, ${lineColor} 1px, transparent 1px)
             `,
             backgroundSize: "32px 32px",
             WebkitMaskImage:

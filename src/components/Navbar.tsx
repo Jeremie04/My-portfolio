@@ -19,6 +19,7 @@ import {
 } from "lucide-react";
 import { useEffect, useState } from "react";
 import EmailDialog from "./EmailDialog";
+import { ThemeSwitch } from "./theme-switch";
 
 type NavItemProps = {
   href: string;
@@ -79,7 +80,7 @@ export default function Navbar() {
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 z-50 border-b bg-white/70 backdrop-blur">
+      <header className="fixed top-0 left-0 right-0 z-50 border-b bg-white/70 dark:bg-black/70 backdrop-blur">
         <div className="container mx-auto flex h-16 items-center justify-between px-6">
           {/* Logo */}
           <a href="#home">
@@ -101,6 +102,7 @@ export default function Navbar() {
                 {link.label}
               </a>
             ))}
+            <ThemeSwitch />
             <Button onClick={() => setOpenEmailDialog(true)}>
               <Download data-icon="inline-start" /> CV
             </Button>
