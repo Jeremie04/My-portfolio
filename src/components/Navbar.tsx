@@ -130,20 +130,22 @@ export default function Navbar() {
                     {link.label}
                   </NavItem>
                 ))}
-
                 {/* séparateur */}
-                <div className="border-t my-4"></div>
+                <div className="border-t my-2"></div>
 
-                {/* bouton CTA */}
-                <a href="#contact" className="p-4">
-                  <Button
-                    className="w-full"
-                    onClick={() => setOpenEmailDialog(true)}
-                  >
-                    <Download data-icon="inline-start" />
-                    CV
-                  </Button>
-                </a>
+                <div className="flex items-center p-2 gap-2 w-full">
+                  <ThemeSwitch />
+
+                  <a href="#contact" className="flex-1">
+                    <Button
+                      className="w-full"
+                      onClick={() => setOpenEmailDialog(true)}
+                    >
+                      <Download data-icon="inline-start" />
+                      CV
+                    </Button>
+                  </a>
+                </div>
               </nav>
             </SheetContent>
           </Sheet>
