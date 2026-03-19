@@ -17,8 +17,11 @@ import {
 } from "@/components/ui/carousel";
 import { Button } from "./ui/button";
 import { Github } from "lucide-react";
+import i18n from "@/config/i18n";
+import type { Lang } from "@/data/types";
 
 export function ProjectDialog({ project, open, setOpen }: any) {
+  const lang = i18n.language.split("-")[0] as Lang;
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogContent className="!max-w-6xl">
@@ -59,9 +62,11 @@ export function ProjectDialog({ project, open, setOpen }: any) {
 
             {/* infos supplémentaires */}
             <ul className="list-disc pl-5 space-y-1 text-sm">
-              {project?.moreDetails?.infoSup.map((info: string, i: number) => (
-                <li key={i}>{info}</li>
-              ))}
+              {project?.moreDetails?.infoSup[lang].map(
+                (info: string, i: number) => (
+                  <li key={i}>{info}</li>
+                )
+              )}
             </ul>
             <div className="ml-auto">
               {project?.moreDetails?.gits && (
