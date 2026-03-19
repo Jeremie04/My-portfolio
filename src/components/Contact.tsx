@@ -14,24 +14,27 @@ import { Textarea } from "./ui/textarea";
 import { useState } from "react";
 import { sendContactMessage } from "@/services/EmailService";
 import { toast } from "sonner";
+import { useTranslation } from "react-i18next";
 
 export default function Contact() {
+  const { t } = useTranslation();
   return (
     <section id="contact" className="py-24 max-w-250 m-auto px-6">
       <div className="max-w-6xl mx-auto">
         {/* Title */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold">Contact</h2>
+          <h2 className="text-3xl font-bold">{t("contact.title")}</h2>
           <p className="text-muted-foreground mt-4">
-            N'hésitez pas à me contacter pour discuter de vos projets ou
-            collaborations.
+            {t("contact.description")}
           </p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-12 items-start">
           {/* Contact Info */}
           <div className="space-y-6 p-6">
-            <h3 className="text-xl font-semibold">Mes coordonnées</h3>
+            <h3 className="text-xl font-semibold">
+              {t("contact.contact_details")}
+            </h3>
 
             <div className="space-y-4">
               <div className="flex items-center gap-4">
@@ -57,7 +60,7 @@ export default function Contact() {
             {/* Socials */}
             <div className="pt-6">
               <p className="text-sm text-muted-foreground mb-3">
-                Réseaux sociaux
+                {t("contact.social_media")}
               </p>
 
               <div className="flex gap-4">
@@ -88,7 +91,7 @@ export default function Contact() {
           {/* Contact Form */}
           <Card>
             <CardHeader>
-              <CardTitle>Envoyer un message</CardTitle>
+              <CardTitle>{t("contact.form.title")}</CardTitle>
             </CardHeader>
 
             <CardContent className="space-y-4">
@@ -102,6 +105,7 @@ export default function Contact() {
 }
 
 function MessageForm() {
+  const { t } = useTranslation();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [subject, setSubject] = useState("");
@@ -123,14 +127,15 @@ function MessageForm() {
       message: "",
     };
 
-    if (!name.trim()) newErrors.name = "Le nom est requis";
+    if (!name.trim()) newErrors.name = t("contact.message.error.name");
 
-    if (!email.trim()) newErrors.email = "L'email est requis";
-    else if (!/\S+@\S+\.\S+/.test(email)) newErrors.email = "Email invalide";
+    if (!email.trim()) newErrors.email = t("contact.message.error.email");
+    else if (!/\S+@\S+\.\S+/.test(email))
+      newErrors.email = t("contact.message.error.invalid_email");
 
-    if (!subject.trim()) newErrors.subject = "L'objet est requis";
+    if (!subject.trim()) newErrors.subject = t("contact.message.error.object");
 
-    if (!message.trim()) newErrors.message = "Le message est requis";
+    if (!message.trim()) newErrors.message = t("contact.message.error.message");
 
     setErrors(newErrors);
     return !Object.values(newErrors).some(Boolean);
@@ -147,7 +152,7 @@ function MessageForm() {
         message,
       });
 
-      toast.success("Message envoyé !");
+      toast.success(t("contact.message.toast.success"));
     } catch (e: any) {
       console.log(e);
       toast.error(e.message);
@@ -161,7 +166,7 @@ function MessageForm() {
       <div className="space-y-1">
         <Input
           id="name"
-          placeholder="Votre nom"
+          placeholder={t("contact.form.name")}
           value={name}
           onChange={(e) => setName(e.target.value)}
           aria-invalid={!!errors.name}
@@ -181,7 +186,7 @@ function MessageForm() {
       <div className="space-y-1">
         <Input
           type="email"
-          placeholder="Votre email"
+          placeholder={t("contact.form.email")}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           aria-invalid={!!errors.email}
@@ -200,7 +205,7 @@ function MessageForm() {
 
       <div className="space-y-1">
         <Input
-          placeholder="Objet"
+          placeholder={t("contact.form.object")}
           value={subject}
           onChange={(e) => setSubject(e.target.value)}
           aria-invalid={!!errors.subject}
@@ -219,7 +224,7 @@ function MessageForm() {
 
       <div className="space-y-1">
         <Textarea
-          placeholder="Votre message..."
+          placeholder={t("contact.form.message")}
           className="h-40 peer"
           value={message}
           onChange={(e) => setMessage(e.target.value)}
@@ -238,7 +243,7 @@ function MessageForm() {
 
       <Button className="w-full" onClick={handleSubmit} disabled={loading}>
         {loading && <Loader2 className="h-4 w-4 animate-spin" />}
-        {loading ? "Envoi..." : "Envoyer"}
+        {loading ? t("contact.form.button_loading") : t("contact.form.button")}
       </Button>
     </>
   );

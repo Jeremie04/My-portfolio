@@ -1,14 +1,16 @@
 import { Github, Linkedin, Mail } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const navLinks = [
-  { id: "about", label: "À propos" },
-  { id: "services", label: "Services" },
-  { id: "skills", label: "Compétences" },
-  { id: "projects", label: "Projets" },
-  { id: "contact", label: "Contact" },
+  { id: "about", label: "navbar.about" },
+  { id: "services", label: "navbar.service" },
+  { id: "skills", label: "navbar.skill" },
+  { id: "projects", label: "navbar.project" },
+  { id: "contact", label: "navbar.contact" },
 ];
 
 export default function Footer() {
+  const { t } = useTranslation();
   return (
     <footer className="border-t bg-background">
       <div className="container mx-auto px-6 py-10">
@@ -19,15 +21,15 @@ export default function Footer() {
               RAVONINAHITRA Ranto Ny Aina Jeremie
             </h3>
             <p className="text-sm text-muted-foreground mt-3 leading-relaxed">
-              Développeur Full-Stack spécialisé en React, Angular et Spring
-              Boot. Je conçois des applications web modernes, performantes et
-              maintenables.
+              {t("footer.description")}
             </p>
           </div>
 
           {/* Navigation */}
           <div className="text-center">
-            <h4 className="text-sm font-semibold mb-4">Navigation</h4>
+            <h4 className="text-sm font-semibold mb-4">
+              {t("footer.navigation")}
+            </h4>
 
             <ul className="space-y-2">
               {navLinks.map((link) => (
@@ -36,7 +38,7 @@ export default function Footer() {
                     href={`#${link.id}`}
                     className="text-sm text-muted-foreground hover:text-primary transition-colors"
                   >
-                    {link.label}
+                    {t(link.label)}
                   </a>
                 </li>
               ))}
@@ -45,7 +47,9 @@ export default function Footer() {
 
           {/* Contact / Social */}
           <div>
-            <h4 className="text-sm font-semibold mb-4">Contact</h4>
+            <h4 className="text-sm font-semibold mb-4">
+              {t("footer.contact")}
+            </h4>
 
             <div className="flex items-center gap-4">
               <a
@@ -73,14 +77,14 @@ export default function Footer() {
             </div>
 
             <p className="text-xs text-muted-foreground mt-4">
-              Disponible pour des opportunités et collaborations.
+              {t("footer.message")}
             </p>
           </div>
         </div>
 
         {/* Bottom */}
         <div className="border-t mt-8 pt-6 text-center text-sm text-muted-foreground">
-          © {new Date().getFullYear()} Ranto Jeremie — Tous droits réservés.
+          © {new Date().getFullYear()} Ranto Jeremie — {t("footer.right")}
         </div>
       </div>
     </footer>

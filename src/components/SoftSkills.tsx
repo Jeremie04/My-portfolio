@@ -1,57 +1,19 @@
 import { Marquee } from "@/components/ui/marquee/marquee-animation";
 import { Card } from "@/components/ui/card";
-import {
-  Lightbulb,
-  GitBranch,
-  MessageCircle,
-  Database,
-  Search,
-  Zap,
-} from "lucide-react";
-import { Users, Clock, BookOpen, Brain, FileText } from "lucide-react";
-
-const softskills = [
-  {
-    label: "Méthodologie Agile / Scrum",
-    icon: GitBranch,
-  },
-  {
-    label: "Clean Code & bonnes pratiques",
-    icon: Lightbulb,
-  },
-  {
-    label: "Communication technique efficace",
-    icon: MessageCircle,
-  },
-  {
-    label: "Modélisation base de données",
-    icon: Database,
-  },
-  {
-    label: "Analyse des besoins métier",
-    icon: Search,
-  },
-  {
-    label: "Adaptation rapide",
-    icon: Zap,
-  },
-];
-
-const softskills2 = [
-  { label: "Esprit d’équipe / collaboration", icon: Users },
-  { label: "Résolution de problèmes", icon: Lightbulb },
-  { label: "Curiosité technologique", icon: Search },
-  { label: "Apprentissage continu", icon: BookOpen },
-  { label: "Gestion du temps", icon: Clock },
-  { label: "Esprit critique", icon: Brain },
-  { label: "Documentation claire", icon: FileText },
-];
+import { useTranslation } from "react-i18next";
+import type { Lang } from "@/data/types";
+import i18n from "@/config/i18n";
+import { softskills, softskills2 } from "@/data/softskills";
 
 export default function SoftSkills() {
+  const lang = i18n.language.split("-")[0] as Lang;
+  const softskills_ = softskills[lang] || softskills.en;
+  const softskills2_ = softskills2[lang] || softskills2.en;
+  const { t } = useTranslation();
   return (
     <section className="py-24 px-6">
       <h2 className="text-3xl font-bold text-center mb-12">
-        Compétences professionnelles
+        {t("professional_skills.title")}
       </h2>
 
       {/* Container */}
@@ -71,7 +33,7 @@ export default function SoftSkills() {
         />
 
         <Marquee pauseOnHover className="[--duration:27s]">
-          {softskills.map((skill, index) => {
+          {softskills_.map((skill, index) => {
             const Icon = skill.icon;
 
             return (
@@ -90,7 +52,7 @@ export default function SoftSkills() {
 
         {/* ligne 2 (inverse) */}
         <Marquee reverse pauseOnHover className="[--duration:27s]">
-          {softskills2.map((skill, index) => {
+          {softskills2_.map((skill, index) => {
             const Icon = skill.icon;
 
             return (

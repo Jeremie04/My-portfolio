@@ -6,7 +6,7 @@
       "project": "Projets",
       "contact": "Contact"
     },
-    "home": {
+    "hero": {
       "title": "Bonjour, Je suis Ranto",
       "description": "Développeur Full Stack spécialisé en React, Angular et Spring. Je conçois des applications web performantes et maintenables.",
       "buttons": {
@@ -25,11 +25,7 @@
         "passion": "Passion"
       },
       "background": {
-        "title": "Parcours",
-        "present": "Présent",
-        "master": "Master Informatique",
-        "licence": "Licence Informatique",
-        "bacc": "Baccalauréat"
+        "title": "Parcours"
       }
     },
     "services": {
@@ -53,11 +49,25 @@
       "contact_details": "Mes coordonnées",
       "social_media": "Réseaux sociaux",
       "form": {
+        "title": "Envoyer un message",
         "name": "Votre nom",
         "email": "Votre Email",
         "object": "Objet",
         "message": "Votre message",
-        "button": "Envoyer"
+        "button": "Envoyer",
+        "button_loading": "Envoi..."
+      },
+      "message": {
+        "error": {
+          "name":"Le nom est requis",
+          "email":"L'email est requis",
+          "invalid_email":"Email invalide",
+          "object":"L'objet est requis",
+          "message":"Le message est requis"
+        },
+        "toast": {
+          "success": "Message envoyé !"
+        }
       }
     },
     "footer": {

@@ -123,16 +123,14 @@ export default function Navbar() {
 
             <SheetContent side="right" className="w-72">
               <SheetHeader>
-                <a href="#home">
-                  <SheetTitle>Ranto Jeremie.dev</SheetTitle>
-                </a>
+                <SheetTitle>Ranto Jeremie.dev</SheetTitle>
                 <SheetDescription></SheetDescription>
               </SheetHeader>
               <nav className="flex flex-col gap-3">
                 {/* Les liens */}
                 {navLinks.map((link) => (
                   <NavItem key={link.id} href={`#${link.id}`} icon={link.icon}>
-                    {link.label}
+                    {t(link.label)}
                   </NavItem>
                 ))}
                 {/* séparateur */}

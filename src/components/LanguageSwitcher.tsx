@@ -36,7 +36,7 @@ export default function LanguageSwitcher() {
             loading="lazy"
             className="w-5 h-5 rounded-sm"
           />
-          <span>{currentLang.label}</span>
+          <span className="hidden sm:inline">{currentLang.label}</span>
         </Button>
       </DropdownMenuTrigger>
 
