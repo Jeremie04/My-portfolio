@@ -20,6 +20,8 @@ import {
 import { useEffect, useState } from "react";
 import EmailDialog from "./EmailDialog";
 import { ThemeSwitch } from "./theme-switch";
+import LanguageSwitcher from "./LanguageSwitcher";
+import { useTranslation } from "react-i18next";
 
 type NavItemProps = {
   href: string;
@@ -48,17 +50,19 @@ export function NavItem({ href, icon: Icon, children }: NavItemProps) {
 }
 
 const navLinks = [
-  { id: "about", label: "À propos", icon: User },
-  { id: "services", label: "Services", icon: Briefcase },
-  { id: "skills", label: "Compétences", icon: Brain },
-  { id: "projects", label: "Projets", icon: FolderGit2 },
-  { id: "contact", label: "Contact", icon: Mail },
+  { id: "about", label: "navbar.about", icon: User },
+  { id: "services", label: "navbar.service", icon: Briefcase },
+  { id: "skills", label: "navbar.skill", icon: Brain },
+  { id: "projects", label: "navbar.project", icon: FolderGit2 },
+  { id: "contact", label: "navbar.contact", icon: Mail },
 ];
 
 export default function Navbar() {
   // pour les changement des link selon la section
   const [activeSection, setActiveSection] = useState("about");
   const [openEmailDialog, setOpenEmailDialog] = useState(false);
+
+  const { t } = useTranslation();
 
   useEffect(() => {
     const sections = document.querySelectorAll("section");
@@ -99,10 +103,11 @@ export default function Navbar() {
                     : ""
                 }`}
               >
-                {link.label}
+                {t(link.label)}
               </a>
             ))}
             <ThemeSwitch />
+            <LanguageSwitcher />
             <Button onClick={() => setOpenEmailDialog(true)}>
               <Download data-icon="inline-start" /> CV
             </Button>
@@ -135,6 +140,8 @@ export default function Navbar() {
 
                 <div className="flex items-center p-2 gap-2 w-full">
                   <ThemeSwitch />
+
+                  <LanguageSwitcher />
 
                   <a href="#contact" className="flex-1">
                     <Button

@@ -1,0 +1,70 @@
+{
+    "navbar": {
+      "about": "About",
+      "service": "Services",
+      "skill": "Skills",
+      "project": "Projects",
+      "contact": "Contact"
+    },
+    "home": {
+      "title": "Hello, I'm Ranto",
+      "description": "Full Stack Developer specialized in React, Angular, and Spring. I build high-performance and maintainable web applications.",
+      "buttons": {
+        "primary": "View my projects",
+        "secondary": "Contact me"
+      }
+    },
+    "about": {
+        "title": "About",
+        "paragraph-1": "Full Stack Developer specialized in React, Angular, and Spring Boot, currently pursuing a Master's degree in Computer Science. I design modern web applications with a strong focus on performance, code quality, and maintainability.",
+        "paragraph-2": "I work across the entire development lifecycle: from design and frontend/backend development to API integration and application deployment. My goal is to build reliable, high-performance, and user-centered solutions.",
+        "paragraph-3": "Passionate about software engineering, I have a strong interest in application architecture, clean code, and best development practices. As I am at the beginning of my career, I am constantly seeking to improve my skills and take on new technical challenges.",
+        "details": {
+            "formation": "Education",
+            "techno": "Technologies",
+            "passion": "Passion"
+        },
+        "background": {
+            "title": "Background",
+            "present": "Present",
+            "master": "Master's Degree in Computer Science",
+            "licence": "Bachelor's Degree in Computer Science",
+            "bacc": "High School Diploma"
+        }
+    },
+    "services": {
+      "title": "Services",
+      "description": "End-to-end solutions to design, develop, and deploy modern web applications."
+    },
+    "skills": {
+      "title": "Skills",
+      "description": "Technologies and tools I use to design and build modern applications."
+    },
+    "professional_skills": {
+      "title": "Professional Skills"
+    },
+    "projects": {
+      "title": "My Projects",
+      "empty": "No projects available at the moment"
+    },
+    "contact": {
+      "title": "Contact",
+      "description": "Feel free to reach out to discuss your projects or collaboration opportunities.",
+      "contact_details": "Contact Details",
+      "social_media": "Social Media",
+      "form": {
+        "name": "Your name",
+        "email": "Your email",
+        "object": "Subject",
+        "message": "Your message",
+        "button": "Send"
+      }
+    },
+    "footer": {
+      "description": "Full Stack Developer specialized in React, Angular, and Spring Boot. I build modern, high-performance, and maintainable web applications.",
+      "navigation": "Navigation",
+      "contact": "Contact",
+      "message": "Open to opportunities and collaborations.",
+      "right": "All rights reserved."
+    }
+  }
