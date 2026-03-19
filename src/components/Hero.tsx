@@ -36,7 +36,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start"
+            className="flex flex-col flex-row gap-4 justify-center md:justify-start"
           >
             <a href="#projects">
               <Button>{t("hero.buttons.primary")}</Button>

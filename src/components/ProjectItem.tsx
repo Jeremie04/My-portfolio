@@ -15,12 +15,26 @@ export function ProjectItem({ item, setSelectedProject, setOpen }: any) {
     <Card className="relative w-full max-w-sm mx-auto overflow-hidden transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl group">
       {/* Image + overlay */}
       <div className="relative">
-        <img
-          src={item.imageUrl ? item.imageUrl : "/project-default.png"}
-          alt={item.name}
-          loading="lazy"
-          className="w-full aspect-video object-cover transition-all duration-300 group-hover:brightness-60"
-        />
+        <div className="relative group">
+          <img
+            src={item.imageUrl || "/project-default.png"}
+            alt={item.name}
+            loading="lazy"
+            className="
+              w-full aspect-video object-cover
+            "
+          />
+
+          {/* overlay */}
+          <div
+            className="
+              absolute inset-0
+              bg-black/0
+              group-hover:bg-black/35
+              transition
+            "
+          />
+        </div>
 
         {/* Overlay boutons GitHub + MoreDetails */}
         <div
@@ -34,7 +48,7 @@ export function ProjectItem({ item, setSelectedProject, setOpen }: any) {
           {item.gitUrl && (
             <a href={item.gitUrl} target="_blank" rel="noopener noreferrer">
               <Button
-                variant="outline"
+                variant="secondary"
                 className="
                   rounded-full p-2
                   bg-black/70 text-white border-white/20
@@ -49,7 +63,7 @@ export function ProjectItem({ item, setSelectedProject, setOpen }: any) {
           )}
           {item.moreDetails && (
             <Button
-              variant="outline"
+              variant="secondary"
               onClick={() => {
                 setSelectedProject(item);
                 setOpen(true);
