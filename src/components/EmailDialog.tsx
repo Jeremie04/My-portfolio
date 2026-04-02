@@ -14,8 +14,10 @@ import { toast } from "sonner";
 import { useState } from "react";
 import { sendCV, sendNotif } from "@/services/EmailService";
 import { Loader2 } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 export default function EmailDialog({ open, setOpen }: any) {
+  const { t } = useTranslation();
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -47,10 +49,10 @@ export default function EmailDialog({ open, setOpen }: any) {
             </div>
             <DialogHeader>
               <DialogTitle className="sm:text-center">
-                Recevoir le CV par email
+                {t("dialog.title")}
               </DialogTitle>
               <DialogDescription className="sm:text-center">
-                Le CV sera envoyé directement dans votre boîte de réception.
+                {t("dialog.description")}
               </DialogDescription>
             </DialogHeader>
           </div>
@@ -69,7 +71,7 @@ export default function EmailDialog({ open, setOpen }: any) {
                   aria-label="Email"
                   className="peer ps-9"
                   id="dialog-subscribe"
-                  placeholder="Votre Email"
+                  placeholder={t("dialog.email_placeholder")}
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -85,7 +87,7 @@ export default function EmailDialog({ open, setOpen }: any) {
               disabled={loading}
             >
               {loading && <Loader2 className="h-4 w-4 animate-spin" />}
-              {loading ? "Envoi..." : "Envoyer"}
+              {loading ? t("dialog.button_loading") : t("dialog.button")}
             </Button>
           </form>
         </DialogContent>

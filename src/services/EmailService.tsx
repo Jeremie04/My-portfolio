@@ -1,31 +1,39 @@
 import emailjs from "@emailjs/browser";
 
 export const sendCV = async (userEmail: string) => {
-  const res = await fetch(`${import.meta.env.VITE_API_URL}/send-cv`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      email: userEmail,
-    }),
-  });
+  try {
+    const response = await emailjs.send(
+      "service_9gvwmnw",
+      "template_zrlul1o",
+      {
+        user_email: userEmail,
+      },
+      "3B1mCpVd8FCuIMXEO"
+    );
 
-  if (!res.ok) {
-    const text = await res.text();
-    throw new Error(text);
+    return response;
+  } catch (error) {
+    console.error("Erreur EmailJS :", error);
+    throw error;
   }
-
-  return res.json();
 };
 
 export const sendNotif = async (userEmail: string) => {
-  const res = await fetch(`${import.meta.env.VITE_API_URL}/send-notif`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ email: userEmail }),
-  });
-  return res.json();
+  try {
+    const response = await emailjs.send(
+      "service_4f0gfcv",
+      "template_vdylnet",
+      {
+        user_email: userEmail,
+      },
+      "7gNWnZduDgizAV-IQ"
+    );
+
+    return response;
+  } catch (error) {
+    console.error("Erreur EmailJS :", error);
+    throw error;
+  }
 };
 
 export const sendContactMessage = async (data: {

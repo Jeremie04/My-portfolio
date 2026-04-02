@@ -153,6 +153,11 @@ function MessageForm() {
       });
 
       toast.success(t("contact.message.toast.success"));
+
+      setName("");
+      setEmail("");
+      setSubject("");
+      setMessage("");
     } catch (e: any) {
       console.log(e);
       const errorMessage =

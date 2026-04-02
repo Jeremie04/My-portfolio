@@ -76,5 +76,12 @@
       "contact": "Contact",
       "message": "Open to opportunities and collaborations.",
       "right": "All rights reserved."
+    },
+    "dialog": {
+      "title": "Receive the CV by email",
+      "description": "The CV will be sent directly to your inbox.",
+      "email_placeholder": "Your email",
+      "button": "Send",
+      "button_loading": "Sending..."
     }
   }

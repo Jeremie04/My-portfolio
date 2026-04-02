@@ -76,5 +76,12 @@
       "contact": "Contact",
       "message": "Disponible pour des opportunités et collaborations.",
       "right": "Tous droits réservés."
+    },
+    "dialog": {
+      "title": "Recevoir le CV par email",
+      "description": "Le CV sera envoyé directement dans votre boîte de réception.",
+      "email_placeholder": "Votre email",
+      "button": "Envoyer",
+      "button_loading": "Envoi..."
     }
   }
