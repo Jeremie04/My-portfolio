@@ -1,3 +1,5 @@
+import emailjs from "@emailjs/browser";
+
 export const sendCV = async (userEmail: string) => {
   const res = await fetch(`${import.meta.env.VITE_API_URL}/send-cv`, {
     method: "POST",
@@ -32,19 +34,22 @@ export const sendContactMessage = async (data: {
   subject: string;
   message: string;
 }) => {
-  const res = await fetch(`${import.meta.env.VITE_API_URL}/contact`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  });
+  try {
+    const response = await emailjs.send(
+      "service_4f0gfcv",
+      "template_tvv0xb8",
+      {
+        user_name: data.name,
+        user_email: data.email,
+        subject: data.subject,
+        message: data.message,
+      },
+      "7gNWnZduDgizAV-IQ"
+    );
 
-  const responseData = await res.json();
-
-  if (!res.ok) {
-    throw new Error(responseData.error || "Erreur lors de l'envoi");
+    return response;
+  } catch (error) {
+    console.error("Erreur EmailJS :", error);
+    throw error;
   }
-
-  return responseData;
 };

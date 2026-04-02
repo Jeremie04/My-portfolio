@@ -155,7 +155,9 @@ function MessageForm() {
       toast.success(t("contact.message.toast.success"));
     } catch (e: any) {
       console.log(e);
-      toast.error(e.message);
+      const errorMessage =
+        e?.text || e?.message || "Une erreur est survenue. Veuillez réessayer.";
+      toast.error(errorMessage);
     } finally {
       setLoading(false);
     }
