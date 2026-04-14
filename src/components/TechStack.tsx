@@ -1,8 +1,11 @@
+import { useTheme } from "@/context/theme-provider";
 import { skills } from "@/data/skills";
 import { useTranslation } from "react-i18next";
 
 export default function TechStack() {
   const { t } = useTranslation();
+  const { resolvedTheme, setTheme } = useTheme();
+
   return (
     <section id="skills" className="py-24 px-6">
       <div className="max-w-6xl mx-auto">
@@ -28,7 +31,11 @@ export default function TechStack() {
                   >
                     {tech.url ? (
                       <img
-                        src={tech.url}
+                        src={
+                          resolvedTheme === "dark" && tech.darkmode_url
+                            ? tech.darkmode_url
+                            : tech.url
+                        }
                         alt={tech.name}
                         loading="lazy"
                         width={45}
