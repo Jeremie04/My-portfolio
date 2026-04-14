@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import i18n from "@/config/i18n";
 import type { Lang } from "@/data/types";
 import { services } from "@/data/services";
+import { Title } from "./ui/Title";
 
 export function Services() {
   const lang = i18n.language.split("-")[0] as Lang;
@@ -11,12 +12,10 @@ export function Services() {
   return (
     <section id="services" className="py-24 px-6">
       <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold">{t("services.title")}</h2>
-          <p className="text-muted-foreground mt-4">
-            {t("services.description")}
-          </p>
-        </div>
+        <Title
+          title={t("services.title")}
+          description={t("services.description")}
+        />
 
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-2">
           {items.map((service, index) => {

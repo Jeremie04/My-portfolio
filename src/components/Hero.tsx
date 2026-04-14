@@ -3,6 +3,8 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { useTranslation } from "react-i18next";
+import ButtonHeartbeatEffect from "./ui/ButtonHeartbeatEffect";
+import SplitText from "./ui/splitText";
 
 export default function Hero() {
   const { t } = useTranslation();
@@ -14,14 +16,20 @@ export default function Hero() {
       <div className="max-w-6xl w-full flex flex-col-reverse md:flex-row items-center gap-12">
         {/* Texte */}
         <div className="text-center md:text-left flex-1">
-          <motion.h1
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+          <SplitText
+            text={t("hero.title")}
+            tag="h1"
             className="text-4xl md:text-5xl font-bold mb-6"
-          >
-            {t("hero.title")}
-          </motion.h1>
+            delay={100}
+            duration={1.25}
+            ease="power3.out"
+            splitType="words"
+            from={{ opacity: 0, y: 40 }}
+            to={{ opacity: 1, y: 0 }}
+            threshold={0.1}
+            rootMargin="-100px"
+            textAlign="center"
+          />
 
           <motion.p
             initial={{ opacity: 0, y: 40 }}
@@ -39,11 +47,11 @@ export default function Hero() {
             className="flex flex-col flex-row gap-4 justify-center md:justify-start"
           >
             <a href="#projects">
-              <Button>{t("hero.buttons.primary")}</Button>
+              <Button variant="outline">{t("hero.buttons.secondary")}</Button>
             </a>
 
             <a href="#contact">
-              <Button variant="outline">{t("hero.buttons.secondary")}</Button>
+              <ButtonHeartbeatEffect label={t("hero.buttons.primary")} />
             </a>
           </motion.div>
         </div>

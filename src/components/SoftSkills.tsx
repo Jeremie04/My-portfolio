@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import type { Lang } from "@/data/types";
 import i18n from "@/config/i18n";
 import { softskills, softskills2 } from "@/data/softskills";
+import { Title } from "./ui/Title";
 
 export default function SoftSkills() {
   const lang = i18n.language.split("-")[0] as Lang;
@@ -12,9 +13,7 @@ export default function SoftSkills() {
   const { t } = useTranslation();
   return (
     <section className="py-24 px-6">
-      <h2 className="text-3xl font-bold text-center mb-12">
-        {t("professional_skills.title")}
-      </h2>
+      <Title title={t("professional_skills.title")} />
 
       {/* Container */}
       <div className="relative max-w-5xl mx-auto overflow-hidden">

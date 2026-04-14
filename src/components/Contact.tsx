@@ -15,19 +15,17 @@ import { useState } from "react";
 import { sendContactMessage } from "@/services/EmailService";
 import { toast } from "sonner";
 import { useTranslation } from "react-i18next";
+import { Title } from "./ui/Title";
 
 export default function Contact() {
   const { t } = useTranslation();
   return (
     <section id="contact" className="py-24 max-w-250 m-auto px-6">
       <div className="max-w-6xl mx-auto">
-        {/* Title */}
-        <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold">{t("contact.title")}</h2>
-          <p className="text-muted-foreground mt-4">
-            {t("contact.description")}
-          </p>
-        </div>
+        <Title
+          title={t("contact.title")}
+          description={t("contact.description")}
+        />
 
         <div className="grid md:grid-cols-2 gap-12 items-start">
           {/* Contact Info */}

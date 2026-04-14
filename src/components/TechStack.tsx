@@ -1,20 +1,19 @@
 import { useTheme } from "@/context/theme-provider";
 import { skills } from "@/data/skills";
 import { useTranslation } from "react-i18next";
+import { Title } from "./ui/Title";
 
 export default function TechStack() {
   const { t } = useTranslation();
-  const { resolvedTheme, setTheme } = useTheme();
+  const { resolvedTheme } = useTheme();
 
   return (
     <section id="skills" className="py-24 px-6">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold">{t("skills.title")}</h2>
-          <p className="text-muted-foreground mt-4">
-            {t("skills.description")}
-          </p>
-        </div>
+        <Title
+          title={t("skills.title")}
+          description={t("skills.description")}
+        />
 
         <div className="space-y-12">
           {skills.map((category, index) => (

@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 import i18n from "@/config/i18n";
 import { projectsBase, projectsText } from "@/data/projects";
 import type { Lang } from "@/data/types";
+import { Title } from "./ui/Title";
 
 type Project = {
   name: string;
@@ -33,9 +34,7 @@ export default function Projects() {
 
   return (
     <section id="projects" className="py-24 px-10">
-      <h2 className="text-3xl font-bold text-center mb-16">
-        {t("projects.title")}
-      </h2>
+      <Title title={t("projects.title")} />
 
       <div className="max-w-6xl mx-auto md:px-4">
         <div className="grid md:grid-cols-3 gap-6">
