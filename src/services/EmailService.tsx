@@ -1,14 +1,15 @@
 import emailjs from "@emailjs/browser";
+const env = import.meta.env;
 
 export const sendCV = async (userEmail: string) => {
   try {
     const response = await emailjs.send(
-      "service_9gvwmnw",
-      "template_zrlul1o",
+      env.VITE_EMAIL_SERVICE_KEY,
+      env.VITE_SEND_CV_TEMPLATE_KEY,
       {
         user_email: userEmail,
       },
-      "3B1mCpVd8FCuIMXEO"
+      env.VITE_EMAILJS_KEY1
     );
 
     return response;
@@ -21,12 +22,12 @@ export const sendCV = async (userEmail: string) => {
 export const sendNotif = async (userEmail: string) => {
   try {
     const response = await emailjs.send(
-      "service_4f0gfcv",
-      "template_vdylnet",
+      env.VITE_EMAIL_SERVICE_KEY,
+      env.VITE_SEND_NOTIF_TEMPLATE_KEY,
       {
         user_email: userEmail,
       },
-      "7gNWnZduDgizAV-IQ"
+      env.VITE_EMAILJS_KEY2
     );
 
     return response;
@@ -44,15 +45,15 @@ export const sendContactMessage = async (data: {
 }) => {
   try {
     const response = await emailjs.send(
-      "service_4f0gfcv",
-      "template_tvv0xb8",
+      env.VITE_EMAIL_SERVICE_KEY,
+      env.VITE_SEND_MESSAGE_TEMPLATE_KEY,
       {
         user_name: data.name,
         user_email: data.email,
         subject: data.subject,
         message: data.message,
       },
-      "7gNWnZduDgizAV-IQ"
+      env.VITE_EMAILJS_KEY2
     );
 
     return response;
