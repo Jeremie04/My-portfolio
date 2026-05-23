@@ -4,7 +4,7 @@ const env = import.meta.env;
 export const sendCV = async (userEmail: string) => {
   try {
     const response = await emailjs.send(
-      env.VITE_EMAIL_SERVICE_KEY,
+      env.VITE_EMAIL_SERVICE_KEY1,
       env.VITE_SEND_CV_TEMPLATE_KEY,
       {
         user_email: userEmail,
@@ -22,7 +22,7 @@ export const sendCV = async (userEmail: string) => {
 export const sendNotif = async (userEmail: string) => {
   try {
     const response = await emailjs.send(
-      env.VITE_EMAIL_SERVICE_KEY,
+      env.VITE_EMAIL_SERVICE_KEY2,
       env.VITE_SEND_NOTIF_TEMPLATE_KEY,
       {
         user_email: userEmail,
@@ -45,7 +45,7 @@ export const sendContactMessage = async (data: {
 }) => {
   try {
     const response = await emailjs.send(
-      env.VITE_EMAIL_SERVICE_KEY,
+      env.VITE_EMAIL_SERVICE_KEY2,
       env.VITE_SEND_MESSAGE_TEMPLATE_KEY,
       {
         user_name: data.name,
