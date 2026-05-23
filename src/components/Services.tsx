@@ -1,4 +1,4 @@
-import { Card, CardContent } from "./ui/card";
+import { CardContent } from "./ui/card";
 import { useTranslation } from "react-i18next";
 import i18n from "@/config/i18n";
 import type { Lang } from "@/data/types";
