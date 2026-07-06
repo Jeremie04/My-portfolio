@@ -42,12 +42,25 @@ export const skills: Skill[] = [
       {
         name: "TypeScript",
         icon: "devicon-typescript-plain colored",
-        url: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Typescript_logo_2020.svg/2048px-Typescript_logo_2020.svg.png",
       },
       {
         name: "Javascript",
         icon: "devicon-javascript-plain colored",
         url: "https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png",
+      },
+    ],
+  },
+  {
+    title: "Mobile",
+    techs: [
+      {
+        name: "React Native",
+        icon: "devicon-react-original colored",
+      },
+      {
+        name: "Ionic",
+        icon: "devicon-ionic-original colored",
+        url: "https://cdn.simpleicons.org/ionic",
       },
     ],
   },
