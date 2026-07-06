@@ -1,7 +1,6 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
-  Card,
   CardAction,
   CardDescription,
   CardFooter,
@@ -9,10 +8,17 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Eye, Github } from "lucide-react";
+import { GlowingCard } from "./ui/glowing-card";
 
 export function ProjectItem({ item, setSelectedProject, setOpen }: any) {
   return (
-    <Card className="relative w-full max-w-sm mx-auto overflow-hidden transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl group">
+    <GlowingCard
+      className="w-full max-w-sm mx-auto"
+      contentClassName="
+        overflow-hidden
+        hover:-translate-y-2
+      "
+    >
       {/* Image + overlay */}
       <div className="relative">
         <div className="relative group">
@@ -105,6 +111,6 @@ export function ProjectItem({ item, setSelectedProject, setOpen }: any) {
           </Badge>
         ))}
       </CardFooter>
-    </Card>
+    </GlowingCard>
   );
 }
