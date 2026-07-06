@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" suppressHydrationWarning>
+<html lang="fr" suppressHydrationWarning>
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="/user.png" />
@@ -18,25 +18,26 @@
     <meta property="og:image" content="https://portfolio-jeremie04s-projects.vercel.app/preview.png">
     <meta property="og:url" content="https://portfolio-jeremie04s-projects.vercel.app">
     <meta property="og:type" content="website">
-  </head>
-  <script type="application/ld+json">
-    {
-     "@context": "https://schema.org",
-     "@type": "Person",
-     "name": "Ranto Jeremie",
-     "jobTitle": "Full Stack Developer",
-     "url": "https://portfolio-jeremie04s-projects.vercel.app",
-     "sameAs": [
-       "https://github.com/Jeremie04",
-       "https://www.linkedin.com/in/jeremie-ravoninahitra-4787362b2/"
-     ],
-     "address": {
-       "@type": "PostalAddress",
-       "addressLocality": "Antananarivo",
-       "addressCountry": "Madagascar"
-     }
-    }
+    <!-- Données structurées (JSON-LD) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Ranto Jeremie",
+        "jobTitle": "Full Stack Developer",
+        "url": "https://portfolio-jeremie04s-projects.vercel.app",
+        "sameAs": [
+          "https://github.com/Jeremie04",
+          "https://www.linkedin.com/in/jeremie-ravoninahitra-4787362b2/"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Antananarivo",
+          "addressCountry": "Madagascar"
+        }
+      }
     </script>
+  </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>

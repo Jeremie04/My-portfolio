@@ -1,14 +1,19 @@
 import "./styles/App.css";
+import { lazy, Suspense } from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
-import Projects from "./components/Projects";
-import Contact from "./components/Contact";
-import About from "./components/About";
-import TechStack from "./components/TechStack";
-import { Services } from "./components/Services";
-import Footer from "./components/Footer";
-import SoftSkills from "./components/SoftSkills";
 import { useTheme } from "@/context/theme-provider";
+
+// Sections sous la ligne de flottaison : chargées à la demande (code-splitting)
+const About = lazy(() => import("./components/About"));
+const Services = lazy(() =>
+  import("./components/Services").then((m) => ({ default: m.Services }))
+);
+const TechStack = lazy(() => import("./components/TechStack"));
+const SoftSkills = lazy(() => import("./components/SoftSkills"));
+const Projects = lazy(() => import("./components/Projects"));
+const Contact = lazy(() => import("./components/Contact"));
+const Footer = lazy(() => import("./components/Footer"));
 
 function App() {
   const { resolvedTheme } = useTheme();
@@ -83,13 +88,15 @@ function App() {
         <div className="relative z-10">
           <Navbar />
           <Hero />
-          <About />
-          <Services />
-          <TechStack />
-          <SoftSkills />
-          <Projects />
-          <Contact />
-          <Footer />
+          <Suspense fallback={null}>
+            <About />
+            <Services />
+            <TechStack />
+            <SoftSkills />
+            <Projects />
+            <Contact />
+            <Footer />
+          </Suspense>
         </div>
       </div>
     </>

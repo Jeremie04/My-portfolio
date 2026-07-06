@@ -18,9 +18,16 @@ i18n
       escapeValue: false
     },
     detection: {
-      order: ["localStorage", "navigator"], 
+      order: ["localStorage", "navigator"],
       caches: ["localStorage"]
     }
   });
+
+// Garde l'attribut <html lang> synchronisé avec la langue active (SEO + a11y)
+const syncHtmlLang = (lng: string) => {
+  document.documentElement.lang = lng.split("-")[0];
+};
+syncHtmlLang(i18n.resolvedLanguage ?? i18n.language);
+i18n.on("languageChanged", syncHtmlLang);
 
 export default i18n;
