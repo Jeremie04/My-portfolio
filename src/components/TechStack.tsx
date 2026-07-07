@@ -80,24 +80,18 @@ export default function TechStack() {
                     key={i}
                     className="flex w-20 flex-col items-center gap-1.5 text-center"
                   >
-                    {tech.url ? (
-                      <img
-                        src={
-                          resolvedTheme === "dark" && tech.darkmode_url
-                            ? tech.darkmode_url
-                            : tech.url
-                        }
-                        alt={tech.name}
-                        loading="lazy"
-                        width={40}
-                        height={40}
-                        className="h-10 w-10 object-contain transition-transform duration-200 hover:scale-110"
-                      />
-                    ) : (
-                      <i
-                        className={`${tech.icon} text-4xl transition-transform duration-200 hover:scale-110`}
-                      />
-                    )}
+                    <img
+                      src={
+                        resolvedTheme === "dark" && tech.darkmode_url
+                          ? tech.darkmode_url
+                          : tech.url
+                      }
+                      alt={tech.name}
+                      loading="lazy"
+                      width={40}
+                      height={40}
+                      className="h-10 w-10 object-contain transition-transform duration-200 hover:scale-110"
+                    />
 
                     <span className="text-xs text-muted-foreground">
                       {tech.name}

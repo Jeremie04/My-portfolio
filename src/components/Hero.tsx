@@ -8,14 +8,14 @@ import { useTranslation } from "react-i18next";
 import ButtonHeartbeatEffect from "./ui/ButtonHeartbeatEffect";
 import SplitText from "./ui/splitText";
 
-// Logos flottants autour de la photo (icônes devicon déjà chargées globalement)
+// Logos flottants autour de la photo (SVG auto-hébergés)
 const floatingTechs = [
-  { icon: "devicon-react-original colored", pos: "top-4 -left-5" },
-  { icon: "devicon-typescript-plain colored", pos: "top-12 -right-6" },
-  { icon: "devicon-angularjs-plain colored", pos: "top-[42%] -left-12" },
-  { icon: "devicon-nodejs-plain colored", pos: "top-[48%] -right-11" },
-  { icon: "devicon-python-plain colored", pos: "bottom-10 -left-4" },
-  { icon: "devicon-spring-plain colored", pos: "bottom-3 -right-4" },
+  { src: "/icons/react.svg", pos: "top-4 -left-5" },
+  { src: "/icons/typescript.svg", pos: "top-12 -right-6" },
+  { src: "/icons/angular.svg", pos: "top-[42%] -left-12" },
+  { src: "/icons/nodejs.svg", pos: "top-[48%] -right-11" },
+  { src: "/icons/python.svg", pos: "bottom-10 -left-4" },
+  { src: "/icons/spring.svg", pos: "bottom-3 -right-4" },
 ];
 
 export default function Hero() {
@@ -168,6 +168,8 @@ export default function Hero() {
               alt="Jeremie"
               loading="eager"
               fetchPriority="high"
+              width={493}
+              height={507}
               className="relative w-72 md:w-90 object-contain drop-shadow-xl"
             />
 
@@ -179,7 +181,7 @@ export default function Hero() {
                 aria-hidden="true"
                 className={`hidden md:flex absolute ${tech.pos} h-14 w-14 items-center justify-center rounded-2xl border border-black/5 dark:border-white/10 bg-white/70 dark:bg-white/5 backdrop-blur-md shadow-lg pointer-events-none`}
               >
-                <i className={`${tech.icon} text-3xl`} />
+                <img src={tech.src} alt="" width={30} height={30} className="h-7 w-7" />
               </div>
             ))}
           </div>
