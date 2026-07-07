@@ -115,7 +115,7 @@ export default function Hero() {
     <section
       id="home"
       ref={container}
-      className="min-h-screen flex items-center justify-center px-6 overflow-x-clip"
+      className="min-h-screen flex items-center justify-center px-6 pt-24 md:pt-0 overflow-x-clip"
     >
       <div className="max-w-6xl w-full flex flex-col-reverse md:flex-row items-center gap-12">
         {/* Texte */}

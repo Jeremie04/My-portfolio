@@ -78,7 +78,7 @@ export default function TechStack() {
                 {category.techs.map((tech, i) => (
                   <div
                     key={i}
-                    className="flex w-16 flex-col items-center gap-1.5 text-center transition-transform duration-200 hover:scale-110"
+                    className="flex w-20 flex-col items-center gap-1.5 text-center"
                   >
                     {tech.url ? (
                       <img
@@ -91,15 +91,31 @@ export default function TechStack() {
                         loading="lazy"
                         width={40}
                         height={40}
-                        className="h-10 w-10 object-contain"
+                        className="h-10 w-10 object-contain transition-transform duration-200 hover:scale-110"
                       />
                     ) : (
-                      <i className={`${tech.icon} text-4xl`} />
+                      <i
+                        className={`${tech.icon} text-4xl transition-transform duration-200 hover:scale-110`}
+                      />
                     )}
 
                     <span className="text-xs text-muted-foreground">
                       {tech.name}
                     </span>
+
+                    {typeof tech.level === "number" && (
+                      <div className="mt-0.5 w-full">
+                        <div className="h-1.5 w-full overflow-hidden rounded-full bg-black/10 dark:bg-white/10">
+                          <div
+                            className="h-full rounded-full bg-gradient-to-r from-sky-400 to-indigo-500"
+                            style={{ width: `${tech.level}%` }}
+                          />
+                        </div>
+                        <span className="mt-1 block text-[10px] font-medium text-muted-foreground">
+                          {tech.level}%
+                        </span>
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>

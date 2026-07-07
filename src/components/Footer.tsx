@@ -1,4 +1,5 @@
 import { Github, Linkedin, Mail } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
 
 const navLinks = [
@@ -73,6 +74,16 @@ export default function Footer() {
                 className="text-muted-foreground hover:text-primary transition-colors"
               >
                 <Linkedin size={20} />
+              </a>
+
+              <a
+                href="https://wa.me/261333203373"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="WhatsApp"
+                className="text-muted-foreground hover:text-primary transition-colors"
+              >
+                <FaWhatsapp size={20} />
               </a>
             </div>
 

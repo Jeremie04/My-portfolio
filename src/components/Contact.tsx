@@ -8,6 +8,7 @@ import {
   MapPin,
   Phone,
 } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
@@ -64,6 +65,8 @@ export default function Contact() {
               <div className="flex gap-4">
                 <a
                   href="https://github.com/Jeremie04"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="p-3 rounded-lg bg-muted hover:bg-primary/10 transition"
                 >
                   <Github className="h-5 w-5" />
@@ -71,6 +74,8 @@ export default function Contact() {
 
                 <a
                   href="https://www.linkedin.com/in/jeremie-ravoninahitra-4787362b2/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="p-3 rounded-lg bg-muted hover:bg-primary/10 transition"
                 >
                   <Linkedin className="h-5 w-5" />
@@ -78,9 +83,21 @@ export default function Contact() {
 
                 <a
                   href="https://www.facebook.com/ravran.jeremie/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="p-3 rounded-lg bg-muted hover:bg-primary/10 transition"
                 >
                   <Facebook className="h-5 w-5" />
+                </a>
+
+                <a
+                  href="https://wa.me/261333203373"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="WhatsApp"
+                  className="p-3 rounded-lg bg-muted hover:bg-primary/10 transition"
+                >
+                  <FaWhatsapp className="h-5 w-5" />
                 </a>
               </div>
             </div>
