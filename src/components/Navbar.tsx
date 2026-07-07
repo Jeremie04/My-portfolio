@@ -65,7 +65,6 @@ export default function Navbar() {
   const { t } = useTranslation();
 
   useEffect(() => {
-    const sections = document.querySelectorAll("section");
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -78,8 +77,32 @@ export default function Navbar() {
         threshold: 0.6,
       }
     );
-    sections.forEach((section) => observer.observe(section));
-    return () => observer.disconnect();
+
+    const observed = new WeakSet<Element>();
+    let mo: MutationObserver;
+
+    const observeSections = () => {
+      document.querySelectorAll("section").forEach((section) => {
+        if (!observed.has(section)) {
+          observed.add(section);
+          observer.observe(section);
+        }
+      });
+      // Les sections sous la ligne de flottaison sont chargées en lazy :
+      // une fois toutes présentes, on arrête d'écouter le DOM.
+      if (navLinks.every((l) => document.getElementById(l.id))) {
+        mo?.disconnect();
+      }
+    };
+
+    observeSections();
+    mo = new MutationObserver(observeSections);
+    mo.observe(document.body, { childList: true, subtree: true });
+
+    return () => {
+      observer.disconnect();
+      mo.disconnect();
+    };
   }, []);
 
   return (
