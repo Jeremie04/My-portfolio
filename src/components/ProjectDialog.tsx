@@ -26,7 +26,7 @@ export function ProjectDialog({ project, open, setOpen }: any) {
       <DialogContent className="!max-w-6xl">
         <div className="grid md:grid-cols-2 gap-6">
           {/* Carousel */}
-          <Carousel className="w-full">
+          <Carousel className="w-full self-center">
             <CarouselContent>
               {project?.moreDetails?.images.map(
                 (img: string, index: number) => (
@@ -37,8 +37,8 @@ export function ProjectDialog({ project, open, setOpen }: any) {
               )}
             </CarouselContent>
 
-            <CarouselPrevious />
-            <CarouselNext />
+            <CarouselPrevious className="left-2" />
+            <CarouselNext className="right-2" />
           </Carousel>
 
           {/* Description */}

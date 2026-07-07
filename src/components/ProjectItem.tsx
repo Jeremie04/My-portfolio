@@ -13,7 +13,7 @@ import { GlowingCard } from "./ui/glowing-card";
 export function ProjectItem({ item, setSelectedProject, setOpen }: any) {
   return (
     <GlowingCard
-      className="w-full max-w-sm mx-auto"
+      className="w-full max-w-md mx-auto"
       contentClassName="
         overflow-hidden
         hover:-translate-y-2
