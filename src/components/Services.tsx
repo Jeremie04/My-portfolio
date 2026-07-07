@@ -1,13 +1,12 @@
 import { CardContent } from "./ui/card";
 import { useTranslation } from "react-i18next";
-import i18n from "@/config/i18n";
-import type { Lang } from "@/data/types";
+import { useLanguage } from "@/hooks/use-language";
 import { services } from "@/data/services";
 import { Title } from "./ui/Title";
 import { GlowingCard } from "./ui/glowing-card";
 
 export function Services() {
-  const lang = i18n.language.split("-")[0] as Lang;
+  const lang = useLanguage();
   const items = services[lang] || services.en;
   const { t } = useTranslation();
   return (

@@ -8,13 +8,12 @@ import {
   TimelineSeparator,
   TimelineTitle,
 } from "@/components/ui/timeline";
-import i18n from "@/config/i18n";
+import { useLanguage } from "@/hooks/use-language";
 import { parcours } from "@/data/parcours";
-import type { Lang } from "@/data/types";
 import { useTranslation } from "react-i18next";
 
 export default function Parcours() {
-  const lang = i18n.language.split("-")[0] as Lang;
+  const lang = useLanguage();
   const items = parcours[lang] || parcours.en;
   const { t } = useTranslation();
   return (

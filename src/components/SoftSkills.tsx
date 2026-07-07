@@ -1,13 +1,12 @@
 import { Marquee } from "@/components/ui/marquee/marquee-animation";
 import { Card } from "@/components/ui/card";
 import { useTranslation } from "react-i18next";
-import type { Lang } from "@/data/types";
-import i18n from "@/config/i18n";
+import { useLanguage } from "@/hooks/use-language";
 import { softskills, softskills2 } from "@/data/softskills";
 import { Title } from "./ui/Title";
 
 export default function SoftSkills() {
-  const lang = i18n.language.split("-")[0] as Lang;
+  const lang = useLanguage();
   const softskills_ = softskills[lang] || softskills.en;
   const softskills2_ = softskills2[lang] || softskills2.en;
   const { t } = useTranslation();

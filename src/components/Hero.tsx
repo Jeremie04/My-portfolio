@@ -89,10 +89,17 @@ export default function Hero() {
 
         const onMove = (e: PointerEvent) => {
           const r = section.getBoundingClientRect();
-          const px = (e.clientX - (r.left + r.width / 2)) / r.width;
-          const py = (e.clientY - (r.top + r.height / 2)) / r.height;
-          xTo(px * 18);
-          yTo(py * 18);
+          // Ne réagir que si le Hero est visible ; sinon recentrer l'image
+          if (r.bottom < 0 || r.top > window.innerHeight) {
+            xTo(0);
+            yTo(0);
+            return;
+          }
+          // Position normalisée au viewport (bornée à [-0.5, 0.5]) → pas de dérive
+          const px = e.clientX / window.innerWidth - 0.5;
+          const py = e.clientY / window.innerHeight - 0.5;
+          xTo(px * 24);
+          yTo(py * 24);
         };
 
         window.addEventListener("pointermove", onMove);

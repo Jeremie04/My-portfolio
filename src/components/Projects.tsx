@@ -2,9 +2,8 @@ import { useState } from "react";
 import { ProjectItem } from "./ProjectItem";
 import { ProjectDialog } from "./ProjectDialog";
 import { useTranslation } from "react-i18next";
-import i18n from "@/config/i18n";
+import { useLanguage } from "@/hooks/use-language";
 import { projectsBase, projectsText } from "@/data/projects";
-import type { Lang } from "@/data/types";
 import { Title } from "./ui/Title";
 
 type Project = {
@@ -22,7 +21,7 @@ type Project = {
 };
 
 export default function Projects() {
-  const lang = i18n.language.split("-")[0] as Lang;
+  const lang = useLanguage();
   const { t } = useTranslation();
 
   const projects = projectsBase.map((p) => ({

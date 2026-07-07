@@ -17,11 +17,10 @@ import {
 } from "@/components/ui/carousel";
 import { Button } from "./ui/button";
 import { Github } from "lucide-react";
-import i18n from "@/config/i18n";
-import type { Lang } from "@/data/types";
+import { useLanguage } from "@/hooks/use-language";
 
 export function ProjectDialog({ project, open, setOpen }: any) {
-  const lang = i18n.language.split("-")[0] as Lang;
+  const lang = useLanguage();
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogContent className="!max-w-6xl">
