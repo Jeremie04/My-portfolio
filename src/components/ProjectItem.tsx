@@ -13,6 +13,7 @@ import { GlowingCard } from "./ui/glowing-card";
 export function ProjectItem({ item, setSelectedProject, setOpen }: any) {
   return (
     <GlowingCard
+      glow={false}
       className="w-full max-w-md mx-auto"
       contentClassName="
         overflow-hidden

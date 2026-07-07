@@ -60,7 +60,7 @@ export default function TechStack() {
           {skills.map((category, index) => (
             <div
               key={index}
-              className="skill-card group rounded-2xl border border-black/5 dark:border-white/10 bg-white/70 dark:bg-white/5 backdrop-blur-md p-6 shadow-sm transition duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:border-blue-500/40"
+              className="skill-card group rounded-2xl border border-black/5 dark:border-white/10 bg-white/70 dark:bg-white/5 backdrop-blur-md p-6 shadow-sm transition duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:border-blue-500/40 dark:hover:border-blue-400/60"
             >
               {/* En-tête de la carte */}
               <div className="mb-5 flex items-center justify-between">
