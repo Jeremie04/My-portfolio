@@ -24,7 +24,7 @@ export function ProjectItem({ item, setSelectedProject, setOpen }: any) {
       <div className="relative">
         <div className="relative group">
           <img
-            src={item.imageUrl || "/project-default.png"}
+            src={"/projects/" + (item.imageUrl || "/project-default.png")}
             alt={item.name}
             loading="lazy"
             className="

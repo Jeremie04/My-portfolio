@@ -31,13 +31,13 @@ export function ProjectDialog({ project, open, setOpen }: any) {
               {project?.moreDetails?.images.map(
                 (img: string, index: number) => (
                   <CarouselItem key={index}>
-                    <img src={img} className="rounded-lg w-full object-cover" />
+                    <img src={"/projects/" + img} className="rounded-lg w-full object-cover" />
                   </CarouselItem>
                 )
               )}
             </CarouselContent>
 
-            <CarouselPrevious className="left-2" />
+            <CarouselPrevious className="left-2 bg-black" />
             <CarouselNext className="right-2" />
           </Carousel>
 
@@ -61,7 +61,7 @@ export function ProjectDialog({ project, open, setOpen }: any) {
 
             {/* infos supplémentaires */}
             <ul className="list-disc pl-5 space-y-1 text-sm">
-              {project?.moreDetails?.infoSup[lang].map(
+              {project?.moreDetails?.infoSup && project?.moreDetails?.infoSup[lang]?.map(
                 (info: string, i: number) => (
                   <li key={i}>{info}</li>
                 )

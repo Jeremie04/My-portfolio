@@ -31,6 +31,7 @@ export default function Parcours() {
               <TimelineDate>{item.date}</TimelineDate>
               <TimelineTitle>{item.title}</TimelineTitle>
               <TimelineContent>{item.content}</TimelineContent>
+              <TimelineContent>{item.mention}</TimelineContent>
               <TimelineIndicator />
             </TimelineHeader>
           </TimelineItem>
